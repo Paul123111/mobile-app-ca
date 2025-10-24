@@ -15,6 +15,10 @@ class AppstoreActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityAppstoreBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.toolbar.title = title
+        setSupportActionBar(binding.toolbar)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

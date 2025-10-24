@@ -7,14 +7,23 @@
     android:layout_height="match_parent"
     tools:context=".AppstoreActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.google.android.material.appbar.AppBarLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        app:elevation="0dip"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleTextColor="@color/black" />
+    </com.google.android.material.appbar.AppBarLayout>
+
 
 
 

@@ -4,10 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ie.setu.appstore.databinding.CardPlacemarkBinding
-import ie.setu.appstore.models.AppMemStore
 import ie.setu.appstore.models.AppModel
 
-class AppstoreAdapter constructor(private var apps: AppMemStore) :
+interface AppListener {
+    fun onAppClick(app: AppModel)
+}
+
+class AppstoreAdapter constructor(private var apps: List<AppModel>,
+                                  private val listener: AppListener) :
     RecyclerView.Adapter<AppstoreAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -18,16 +22,17 @@ class AppstoreAdapter constructor(private var apps: AppMemStore) :
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val placemark = apps.findAll()[holder.adapterPosition]
-        holder.bind(placemark)
+        val app = apps[holder.adapterPosition]
+        holder.bind(app, listener)
     }
 
-    override fun getItemCount(): Int = apps.findAll().size
+    override fun getItemCount(): Int = apps.size
 
     class MainHolder(private val binding : CardPlacemarkBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(app: AppModel) {
+        fun bind(app: AppModel, listener: AppListener) {
             binding.placemarkTitle.text = app.name
+            binding.root.setOnClickListener { listener.onAppClick(app) }
         }
     }
 }

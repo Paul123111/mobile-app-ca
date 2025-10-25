@@ -25,6 +25,20 @@
             android:layout_height="wrap_content"
             app:titleTextColor="@color/black" />
 
+        <EditText
+            android:id="@+id/appSearch"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:autofillHints="hint"
+            android:hint="@string/editText_appSearch"
+            android:inputType="text"
+            android:maxLength="25"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"

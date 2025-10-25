@@ -5,6 +5,7 @@
     <string name="button_appAdd">Add App</string>
     <string name="button_appEdit">Save App</string>
     <string name="button_appDelete">Delete App</string>
+    <string name="editText_appSearch">Search…</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

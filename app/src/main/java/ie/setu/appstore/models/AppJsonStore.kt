@@ -11,6 +11,16 @@ class AppJsonStore : AppStore, JsonStore<AppModel> {
     var lastRemovedId: Int = -1
     override lateinit var context: Context
 
+    override fun search(query: String): ArrayList<AppModel> {
+        val appsList = ArrayList<AppModel>()
+        for (app in apps) {
+            if (app.name.contains(query)) {
+                appsList.add(app.copy())
+            }
+        }
+        return appsList
+    }
+
     override fun loadFromFile() {
         val appsList = readFromFile()
         for (app in appsList) {

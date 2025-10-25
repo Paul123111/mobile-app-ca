@@ -1,5 +1,6 @@
 package ie.setu.appstore.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -16,6 +17,7 @@ import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
 import timber.log.Timber
 import timber.log.Timber.i
+import java.io.File
 
 class AppstoreActivity : AppCompatActivity(), AppListener {
 

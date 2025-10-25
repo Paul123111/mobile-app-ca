@@ -9,13 +9,15 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.appstore.R
+import ie.setu.appstore.adapter.AppListener
 import ie.setu.appstore.adapter.AppstoreAdapter
 import ie.setu.appstore.databinding.ActivityAppstoreBinding
 import ie.setu.appstore.main.MainApp
+import ie.setu.appstore.models.AppModel
 import timber.log.Timber
 import timber.log.Timber.i
 
-class AppstoreActivity : AppCompatActivity() {
+class AppstoreActivity : AppCompatActivity(), AppListener {
 
     private lateinit var binding: ActivityAppstoreBinding
     lateinit var mainApp: MainApp
@@ -31,7 +33,7 @@ class AppstoreActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = AppstoreAdapter(mainApp.apps)
+        binding.recyclerView.adapter = AppstoreAdapter(mainApp.apps.findAll(), this)
 
         binding.bottomNavigationView.setOnItemSelectedListener{item -> (
             when (item.itemId) {
@@ -46,6 +48,21 @@ class AppstoreActivity : AppCompatActivity() {
     }
 
     private val getResult =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) {
+            if (it.resultCode == RESULT_OK) {
+                (binding.recyclerView.adapter)?.
+                notifyItemRangeChanged(0,mainApp.apps.findAll().size)
+            }
+        }
+
+    override fun onAppClick(app: AppModel) {
+        val launcherIntent = Intent(this, AppstoreAddActivity::class.java)
+        getClickResult.launch(launcherIntent)
+    }
+
+    private val getClickResult =
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) {

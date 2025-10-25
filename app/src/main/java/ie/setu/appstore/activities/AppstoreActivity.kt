@@ -59,6 +59,7 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
 
     override fun onAppClick(app: AppModel) {
         val launcherIntent = Intent(this, AppstoreAddActivity::class.java)
+        launcherIntent.putExtra("app_edit", app)
         getClickResult.launch(launcherIntent)
     }
 

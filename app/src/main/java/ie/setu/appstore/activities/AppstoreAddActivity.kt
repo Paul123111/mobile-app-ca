@@ -27,6 +27,11 @@ class AppstoreAddActivity : AppCompatActivity() {
 
         mainApp = application as MainApp
 
+        if (intent.hasExtra("app_edit")) {
+            app = intent.extras?.getParcelable("app_edit")!!
+            binding.placemarkTitle.setText(app.name)
+        }
+
         binding.btnAdd.setOnClickListener() {
             app.name = binding.placemarkTitle.text.toString()
             if (app.name.isNotEmpty()) {

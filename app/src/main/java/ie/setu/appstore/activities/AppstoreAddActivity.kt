@@ -1,6 +1,7 @@
 package ie.setu.appstore.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -30,14 +31,27 @@ class AppstoreAddActivity : AppCompatActivity() {
 
         if (intent.hasExtra("app_edit")) {
             app = intent.extras?.getParcelable("app_edit")!!
-            binding.placemarkTitle.setText(app.name)
+            binding.appName.setText(app.name)
             edit = true
         }
 
-        binding.btnAdd.setText(if (edit) R.string.button_appEdit else R.string.button_appAdd)
+        if (edit) {
+            binding.btnAdd.setText(R.string.button_appEdit)
+            // delete only visible in edit mode
+            binding.btnDelete.visibility = View.VISIBLE
+        } else {
+            binding.btnAdd.setText(R.string.button_appAdd)
+            binding.btnDelete.visibility = View.GONE
+        }
+
+        binding.btnDelete.setOnClickListener {
+            mainApp.apps.delete(app.id)
+            setResult(RESULT_OK)
+            finish()
+        }
 
         binding.btnAdd.setOnClickListener() {
-            app.name = binding.placemarkTitle.text.toString()
+            app.name = binding.appName.text.toString()
             if (app.name.isNotEmpty()) {
                 if (edit) {
                     mainApp.apps.update(app.copy())

@@ -31,7 +31,7 @@ class AppstoreAdapter constructor(private var apps: List<AppModel>,
     class MainHolder(private val binding : CardPlacemarkBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(app: AppModel, listener: AppListener) {
-            binding.placemarkTitle.text = app.name
+            binding.appName.text = app.name
             binding.root.setOnClickListener { listener.onAppClick(app) }
         }
     }

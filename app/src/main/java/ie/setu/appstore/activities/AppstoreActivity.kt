@@ -1,9 +1,10 @@
-package ie.setu.appstore
+package ie.setu.appstore.activities
 
 import android.os.Bundle
 import android.view.Menu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import ie.setu.appstore.R
 import ie.setu.appstore.databinding.ActivityAppstoreBinding
 
 class AppstoreActivity : AppCompatActivity() {
@@ -18,6 +19,7 @@ class AppstoreActivity : AppCompatActivity() {
 
         binding.toolbar.title = title
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
     }
 

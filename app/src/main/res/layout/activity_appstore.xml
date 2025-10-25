@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppstoreActivity">
+    tools:context=".activities.AppstoreActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         app:layout_constraintTop_toTopOf="parent"
@@ -23,8 +23,5 @@
             android:layout_height="wrap_content"
             app:titleTextColor="@color/black" />
     </com.google.android.material.appbar.AppBarLayout>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,12 @@ package ie.setu.appstore.models
 
 import timber.log.Timber.i
 
+var lastId = 0L
+
+internal fun getId(): Long {
+    return lastId++
+}
+
 class AppMemStore: AppStore {
     val apps = ArrayList<AppModel>()
 
@@ -10,8 +16,17 @@ class AppMemStore: AppStore {
     }
 
     override fun create(app: AppModel) {
-        apps.add(app.copy())
+        app.id = getId()
+        apps.add(app)
         logAll()
+    }
+
+    override fun update(app: AppModel) {
+        var foundPlacemark: AppModel? = apps.find { p -> p.id == app.id }
+        if (foundPlacemark != null) {
+            foundPlacemark.name = app.name
+            logAll()
+        }
     }
 
     fun logAll() {

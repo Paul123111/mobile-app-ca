@@ -13,8 +13,8 @@ class MainApp : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         i("Appstore started")
-        apps.create(AppModel("Appstore"))
-        apps.create(AppModel("App 2"))
+        apps.create(AppModel(0, "Appstore"))
+        apps.create(AppModel(0, "App 2"))
 
     }
 }

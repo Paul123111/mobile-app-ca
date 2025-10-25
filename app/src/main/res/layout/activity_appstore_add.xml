@@ -46,7 +46,7 @@
                     android:layout_height="48dp"
                     android:layout_margin="8dp"
                     android:autofillHints="hint"
-                    android:hint="@string/menu_home"
+                    android:hint="@string/editText_appName"
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
@@ -62,7 +62,7 @@
                     android:background="@color/white"
                     android:padding="8dp"
                     android:stateListAnimator="@null"
-                    android:text="@string/menu_home"
+                    android:text="@string/button_appAdd"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 

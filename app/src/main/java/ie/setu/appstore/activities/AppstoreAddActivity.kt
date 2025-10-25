@@ -26,16 +26,24 @@ class AppstoreAddActivity : AppCompatActivity() {
         i("Placemark Activity started...")
 
         mainApp = application as MainApp
+        var edit: Boolean = false
 
         if (intent.hasExtra("app_edit")) {
             app = intent.extras?.getParcelable("app_edit")!!
             binding.placemarkTitle.setText(app.name)
+            edit = true
         }
+
+        binding.btnAdd.setText(if (edit) R.string.button_appEdit else R.string.button_appAdd)
 
         binding.btnAdd.setOnClickListener() {
             app.name = binding.placemarkTitle.text.toString()
             if (app.name.isNotEmpty()) {
-                mainApp.apps.create(app)
+                if (edit) {
+                    mainApp.apps.update(app.copy())
+                } else {
+                    mainApp.apps.create(app.copy())
+                }
                 setResult(RESULT_OK)
                 finish()
             } else {

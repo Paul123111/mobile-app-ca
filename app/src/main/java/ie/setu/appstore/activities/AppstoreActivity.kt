@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import ie.setu.appstore.R
 import ie.setu.appstore.databinding.ActivityAppstoreBinding
 import ie.setu.appstore.main.MainApp
+import timber.log.Timber
 import timber.log.Timber.i
 
 class AppstoreActivity : AppCompatActivity() {
@@ -21,10 +22,22 @@ class AppstoreActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityAppstoreBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        Timber.plant(Timber.DebugTree())
+        i("Appstore activity started")
 
-//        binding.toolbar.title = title
-//        setSupportActionBar(binding.toolbar)
+        //binding.toolbar.title = title
+        //setSupportActionBar(binding.toolbar)
 //        supportActionBar?.setDisplayShowTitleEnabled(false)
+        binding.bottomNavigationView.setOnItemSelectedListener{item -> (
+                when (item.itemId) {
+                    R.id.item_add -> {
+                        val launcherIntent = Intent(this, AppstoreAddActivity::class.java)
+                        getResult.launch(launcherIntent)
+                    }
+                    else -> i("unknown option")
+                })
+                return@setOnItemSelectedListener true
+                }
 
     }
 

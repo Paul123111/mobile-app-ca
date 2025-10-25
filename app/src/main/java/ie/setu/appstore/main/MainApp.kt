@@ -12,6 +12,6 @@ class MainApp : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         i("Appstore started")
-        apps.add(AppModel("testApp"))
+        apps.add(AppModel("Appstore"))
     }
 }

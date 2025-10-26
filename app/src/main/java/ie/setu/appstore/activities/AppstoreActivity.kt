@@ -51,7 +51,6 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
             return@setOnItemSelectedListener true
         }
 
-
         // if search not empty
         binding.appSearch.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -71,14 +70,12 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
                 before: Int,
                 count: Int
             ) {
-                binding.recyclerView.adapter =
-                    AppstoreAdapter(
-                        mainApp.apps.search(binding.appSearch.text.toString()),
-                        this@AppstoreActivity)
-                    (binding.recyclerView.adapter)?.
-                    notifyItemRangeChanged(0,mainApp.apps.findAll().size)
+                i("searching for ${binding.appSearch.text}")
+                val searchAppList = mainApp.apps.search(binding.appSearch.text.toString())
+                binding.recyclerView.swapAdapter(AppstoreAdapter(searchAppList, this@AppstoreActivity), true)
+                (binding.recyclerView.adapter)?.
+                notifyItemRangeChanged(0,mainApp.apps.findAll().size)
             }
-
         })
 
     }
@@ -88,6 +85,7 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
             ActivityResultContracts.StartActivityForResult()
         ) {
             if (it.resultCode == RESULT_OK) {
+                binding.appSearch.setText("")
                 (binding.recyclerView.adapter)?.
                 notifyItemRangeChanged(0,mainApp.apps.findAll().size)
             }
@@ -104,6 +102,7 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
             ActivityResultContracts.StartActivityForResult()
         ) {
             if (it.resultCode == RESULT_OK) {
+                binding.appSearch.setText("")
                 (binding.recyclerView.adapter)?.
                 notifyItemRangeChanged(0,mainApp.apps.findAll().size)
                 if (mainApp.apps.lastRemovedId != -1) (binding.recyclerView.adapter)?.notifyItemRemoved(mainApp.apps.lastRemovedId)

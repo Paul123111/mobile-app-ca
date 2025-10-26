@@ -23,6 +23,7 @@ class AppJsonStore : AppStore, JsonStore<AppModel> {
 
     override fun loadFromFile() {
         val appsList = readFromFile()
+        i(appsList.toString())
         for (app in appsList) {
             app.id = getId()
             apps.add(app.copy())

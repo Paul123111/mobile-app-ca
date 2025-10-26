@@ -10,8 +10,23 @@ import java.math.BigDecimal
 data class AppModel(var id: Int = 0,
                     var name: String = "",
                     var appType: AppType = AppType.App,
-                    var price: Int = 1 ) : Parcelable {
+                    var price: Int = 1,
+                    var ratings: ArrayList<Int> = ArrayList()
+) : Parcelable {
     enum class AppType(val value: Int) {App(0), Game(1)}
+
+    fun addRating(rating: Int) {
+        ratings.add(rating)
+    }
+
+    fun avgRating(): Float {
+        if (ratings.isEmpty()) {return 3F}
+        var sum = 0F
+        for (rating in ratings) {
+            sum += rating
+        }
+        return sum/ratings.size
+    }
 
     fun priceToString(): String {
         if (price == 0) {

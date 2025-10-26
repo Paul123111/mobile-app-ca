@@ -56,6 +56,7 @@ class AppJsonStore : AppStore, JsonStore<AppModel> {
             foundApp.name = app.name
             foundApp.appType = app.appType
             foundApp.price = app.price
+            foundApp.ratings = app.ratings
             writeToFile()
             logAll()
         }

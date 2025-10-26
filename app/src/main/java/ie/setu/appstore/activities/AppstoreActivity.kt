@@ -54,6 +54,12 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
                     val launcherIntent = Intent(this, AppstoreAddActivity::class.java)
                     getResult.launch(launcherIntent)
                 }
+                R.id.item_search -> {
+                }
+                R.id.item_home -> {
+                    val launcherIntent = Intent(this, AppstoreHomeActivity::class.java)
+                    getResult.launch(launcherIntent)
+                }
                 else -> i("unknown option")
             })
             return@setOnItemSelectedListener true
@@ -123,7 +129,7 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
         }
 
     override fun onAppClick(app: AppModel) {
-        val launcherIntent = Intent(this, AppstoreAddActivity::class.java)
+        val launcherIntent = Intent(this, AppViewActivity::class.java)
         launcherIntent.putExtra("app_edit", app)
         getClickResult.launch(launcherIntent)
     }

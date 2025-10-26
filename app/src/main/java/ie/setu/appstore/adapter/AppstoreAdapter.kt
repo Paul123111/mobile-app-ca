@@ -33,6 +33,7 @@ class AppstoreAdapter constructor(private var apps: List<AppModel>,
         fun bind(app: AppModel, listener: AppListener) {
             binding.appName.text = app.name
             binding.appType.text = app.appType.toString()
+            binding.appPrice.text = app.priceToString()
             binding.root.setOnClickListener { listener.onAppClick(app) }
         }
     }

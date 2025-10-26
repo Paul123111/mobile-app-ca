@@ -14,7 +14,7 @@ class AppJsonStore : AppStore, JsonStore<AppModel> {
     override fun search(query: String): ArrayList<AppModel> {
         val appsList = ArrayList<AppModel>()
         for (app in apps) {
-            if (app.name.contains(query)) {
+            if ((app.name.lowercase()).contains(query.lowercase())) {
                 appsList.add(app.copy())
             }
         }
@@ -46,6 +46,7 @@ class AppJsonStore : AppStore, JsonStore<AppModel> {
         if (foundApp != null) {
             foundApp.name = app.name
             foundApp.appType = app.appType
+            foundApp.price = app.price
             writeToFile()
             logAll()
         }

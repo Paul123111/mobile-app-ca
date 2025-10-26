@@ -2,14 +2,12 @@
     <string name="app_name">Appstore</string>
     <string name="menu_home">Home</string>
     <string name="editText_appName">App name</string>
-<!--    <string-array name="spinner_appType">-->
-<!--        <item>App</item>-->
-<!--        <item>Game</item>-->
-<!--    </string-array>-->
+    <string name="editText_appPrice">App price</string>
     <string name="button_appAdd">Add App</string>
     <string name="button_appEdit">Save App</string>
     <string name="button_appDelete">Delete App</string>
     <string name="editText_appSearch">Search…</string>
+    <string name="editText_priceDefault">0.00</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->

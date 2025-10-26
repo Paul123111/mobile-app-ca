@@ -54,6 +54,20 @@
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
+                <EditText
+                    android:id="@+id/appPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints="hint"
+                    android:hint="@string/editText_appPrice"
+                    android:inputType="numberDecimal"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
                 <Spinner
                     android:id="@+id/appType"
                     android:layout_width="match_parent"

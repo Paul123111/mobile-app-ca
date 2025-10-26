@@ -1,6 +1,7 @@
 package ie.setu.appstore.models
 
 import timber.log.Timber.i
+import java.util.function.Predicate
 
 var lastId = 0
 
@@ -42,6 +43,14 @@ class AppMemStore: AppStore {
 
     override fun search(query: String): List<AppModel> {
         TODO("unused")
+    }
+
+    override fun sort(c: Comparator<AppModel>) {
+        TODO("unused")
+    }
+
+    override fun filter(p: (AppModel) -> Boolean): ArrayList<AppModel> {
+        TODO("Not yet implemented")
     }
 
     fun logAll() {

@@ -5,6 +5,7 @@ import kotlinx.serialization.json.Json
 import timber.log.Timber.i
 import java.io.File
 import java.io.FileOutputStream
+import java.util.function.Predicate
 
 class AppJsonStore : AppStore, JsonStore<AppModel> {
     var apps = ArrayList<AppModel>()
@@ -19,6 +20,14 @@ class AppJsonStore : AppStore, JsonStore<AppModel> {
             }
         }
         return appsList
+    }
+
+    override fun sort(c: Comparator<AppModel>) {
+        apps.sortWith(c)
+    }
+
+    override fun filter(p: (AppModel) -> Boolean): ArrayList<AppModel> {
+        return ArrayList(apps.filter(p))
     }
 
     override fun loadFromFile() {

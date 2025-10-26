@@ -22,7 +22,7 @@ class AppstoreAdapter constructor(private var apps: List<AppModel>,
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val app = apps[holder.adapterPosition]
+        val app = apps[holder.bindingAdapterPosition]
         holder.bind(app, listener)
     }
 

@@ -11,9 +11,13 @@ data class AppModel(var id: Int = 0,
                     var name: String = "",
                     var appType: AppType = AppType.App,
                     var price: Int = 1 ) : Parcelable {
-    enum class AppType(val value: Int) {App(0), Game(1), Hi(2)}
+    enum class AppType(val value: Int) {App(0), Game(1)}
 
     fun priceToString(): String {
+        if (price == 0) {
+            return "Free"
+        }
+
         var priceDigits = price.toString().map { it.toString() }
         while (priceDigits.size < 3) {
             priceDigits = listOf("0").plus(priceDigits)

@@ -3,11 +3,14 @@ package ie.setu.appstore.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.appstore.R
 import ie.setu.appstore.adapter.AppListener
@@ -46,7 +49,35 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
                 else -> i("unknown option")
             })
             return@setOnItemSelectedListener true
+        }
+
+        // if search not empty
+        binding.appSearch.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
             }
+
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence?,
+                start: Int,
+                before: Int,
+                count: Int
+            ) {
+                i("searching for ${binding.appSearch.text}")
+                val searchAppList = mainApp.apps.search(binding.appSearch.text.toString())
+                binding.recyclerView.swapAdapter(AppstoreAdapter(searchAppList, this@AppstoreActivity), true)
+                (binding.recyclerView.adapter)?.
+                notifyItemRangeChanged(0,mainApp.apps.findAll().size)
+            }
+        })
+
     }
 
     private val getResult =
@@ -54,6 +85,7 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
             ActivityResultContracts.StartActivityForResult()
         ) {
             if (it.resultCode == RESULT_OK) {
+                binding.appSearch.setText("")
                 (binding.recyclerView.adapter)?.
                 notifyItemRangeChanged(0,mainApp.apps.findAll().size)
             }
@@ -70,6 +102,7 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
             ActivityResultContracts.StartActivityForResult()
         ) {
             if (it.resultCode == RESULT_OK) {
+                binding.appSearch.setText("")
                 (binding.recyclerView.adapter)?.
                 notifyItemRangeChanged(0,mainApp.apps.findAll().size)
                 if (mainApp.apps.lastRemovedId != -1) (binding.recyclerView.adapter)?.notifyItemRemoved(mainApp.apps.lastRemovedId)

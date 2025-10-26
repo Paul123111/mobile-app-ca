@@ -5,4 +5,5 @@ interface AppStore {
     fun create(app: AppModel)
     fun update(app: AppModel)
     fun delete(id: Int)
+    fun search(query: String): List<AppModel>
 }

@@ -8,6 +8,7 @@ internal fun getId(): Int {
     return lastId++
 }
 
+// no longer used, replace with AppJsonStore
 class AppMemStore: AppStore {
     val apps = ArrayList<AppModel>()
     var lastRemovedId: Int = -1
@@ -37,6 +38,10 @@ class AppMemStore: AppStore {
             lastRemovedId = id
             logAll()
         }
+    }
+
+    override fun search(query: String): List<AppModel> {
+        TODO("unused")
     }
 
     fun logAll() {

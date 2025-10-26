@@ -32,6 +32,7 @@ class AppstoreAdapter constructor(private var apps: List<AppModel>,
         RecyclerView.ViewHolder(binding.root) {
         fun bind(app: AppModel, listener: AppListener) {
             binding.appName.text = app.name
+            binding.appType.text = app.appType.toString()
             binding.root.setOnClickListener { listener.onAppClick(app) }
         }
     }

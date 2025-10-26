@@ -45,6 +45,7 @@ class AppJsonStore : AppStore, JsonStore<AppModel> {
         var foundApp: AppModel? = apps.find { a -> a.id == app.id }
         if (foundApp != null) {
             foundApp.name = app.name
+            foundApp.appType = app.appType
             writeToFile()
             logAll()
         }
@@ -66,6 +67,7 @@ class AppJsonStore : AppStore, JsonStore<AppModel> {
 
     override fun readFromFile(): ArrayList<AppModel> {
         val file = File(context.filesDir, "apps.json")
+        i(file.readLines().joinToString("\n"))
         return Json.decodeFromString<ArrayList<AppModel>>(file.readLines().joinToString("\n"))
     }
 

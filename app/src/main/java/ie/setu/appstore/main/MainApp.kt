@@ -16,6 +16,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStreamWriter
 import kotlinx.serialization.json.*
+import ie.setu.appstore.R
 
 class MainApp : Application() {
     var apps = AppJsonStore()
@@ -28,8 +29,19 @@ class MainApp : Application() {
 
         context = baseContext as Context
 
+        //writeDebugApps()
+
         apps.setJsonContext(context)
         apps.loadFromFile()
 
+    }
+
+    // loads the res/raw/apps.json folder for debugging
+    fun writeDebugApps() {
+        val file = File(context.filesDir, "apps.json")
+        val debugFile = resources.openRawResource(R.raw.apps)
+        val writer = FileOutputStream(file)
+        writer.write(debugFile.readBytes())
+        writer.close()
     }
 }

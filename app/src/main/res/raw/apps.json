@@ -1,6 +1,17 @@
-{
-  "apps": [
-    {"name":  "hi"},
-    {"name":  "app 2"}
-  ]
-}
+[
+  {
+    "id":0,
+    "name":"Fun game",
+    "appType":"Game"
+  },
+  {
+    "id":0,
+    "name":"Test app",
+    "appType":"App"
+  },
+  {
+    "id":0,
+    "name":"news",
+    "appType":"App"
+  }
+]

@@ -2,6 +2,7 @@ package ie.setu.appstore.activities
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -27,11 +28,19 @@ class AppstoreAddActivity : AppCompatActivity() {
         i("Placemark Activity started...")
 
         mainApp = application as MainApp
+
+        // https://stackoverflow.com/questions/68282173/convert-enum-values-to-arraystring-with-a-generic-function-in-kotlin
+        // so I don't have to maintain array string based on enum
+        val appTypes = AppModel.AppType.entries.map{it.name}
+        binding.appType.adapter = ArrayAdapter(this,
+            android.R.layout.simple_spinner_dropdown_item, appTypes)
+
         var edit: Boolean = false
 
         if (intent.hasExtra("app_edit")) {
             app = intent.extras?.getParcelable("app_edit")!!
             binding.appName.setText(app.name)
+            binding.appType.setSelection(app.appType.value)
             edit = true
         }
 
@@ -52,6 +61,7 @@ class AppstoreAddActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener() {
             app.name = binding.appName.text.toString()
+            app.appType = AppModel.AppType.valueOf(binding.appType.selectedItem.toString())
             if (app.name.isNotEmpty()) {
                 if (edit) {
                     mainApp.apps.update(app.copy())

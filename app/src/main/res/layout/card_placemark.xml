@@ -19,7 +19,17 @@
             android:layout_alignParentTop="true"
             android:textSize="30sp"
             android:textColor="@color/black"
-            tools:text="A Title" />
+            tools:text="App Name" />
+
+        <TextView
+            android:id="@+id/appType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="false"
+            android:layout_below="@+id/appName"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            tools:text="App Type" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

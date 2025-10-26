@@ -2,10 +2,19 @@
     <string name="app_name">Appstore</string>
     <string name="menu_home">Home</string>
     <string name="editText_appName">App name</string>
+    <string name="editText_appPrice">App price</string>
     <string name="button_appAdd">Add App</string>
     <string name="button_appEdit">Save App</string>
     <string name="button_appDelete">Delete App</string>
     <string name="editText_appSearch">Search…</string>
+    <string name="editText_priceDefault">0.00</string>
+
+    <string-array name="spinner_sort">
+        <item>Name: A-Z</item>
+        <item>Name: Z-A</item>
+        <item>Price: Low-High</item>
+        <item>Price: High-Low</item>
+    </string-array>
 
 
     <!-- TODO: Remove or change this placeholder text -->

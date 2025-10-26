@@ -5,6 +5,7 @@ import kotlinx.serialization.json.Json
 import timber.log.Timber.i
 import java.io.File
 import java.io.FileOutputStream
+import java.util.function.Predicate
 
 class AppJsonStore : AppStore, JsonStore<AppModel> {
     var apps = ArrayList<AppModel>()
@@ -14,11 +15,19 @@ class AppJsonStore : AppStore, JsonStore<AppModel> {
     override fun search(query: String): ArrayList<AppModel> {
         val appsList = ArrayList<AppModel>()
         for (app in apps) {
-            if (app.name.contains(query)) {
+            if ((app.name.lowercase()).contains(query.lowercase())) {
                 appsList.add(app.copy())
             }
         }
         return appsList
+    }
+
+    override fun sort(c: Comparator<AppModel>) {
+        apps.sortWith(c)
+    }
+
+    override fun filter(p: (AppModel) -> Boolean): ArrayList<AppModel> {
+        return ArrayList(apps.filter(p))
     }
 
     override fun loadFromFile() {
@@ -45,6 +54,8 @@ class AppJsonStore : AppStore, JsonStore<AppModel> {
         var foundApp: AppModel? = apps.find { a -> a.id == app.id }
         if (foundApp != null) {
             foundApp.name = app.name
+            foundApp.appType = app.appType
+            foundApp.price = app.price
             writeToFile()
             logAll()
         }
@@ -66,6 +77,7 @@ class AppJsonStore : AppStore, JsonStore<AppModel> {
 
     override fun readFromFile(): ArrayList<AppModel> {
         val file = File(context.filesDir, "apps.json")
+        i(file.readLines().joinToString("\n"))
         return Json.decodeFromString<ArrayList<AppModel>>(file.readLines().joinToString("\n"))
     }
 

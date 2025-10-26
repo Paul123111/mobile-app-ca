@@ -22,7 +22,7 @@ class AppstoreAdapter constructor(private var apps: List<AppModel>,
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val app = apps[holder.adapterPosition]
+        val app = apps[holder.bindingAdapterPosition]
         holder.bind(app, listener)
     }
 
@@ -32,6 +32,8 @@ class AppstoreAdapter constructor(private var apps: List<AppModel>,
         RecyclerView.ViewHolder(binding.root) {
         fun bind(app: AppModel, listener: AppListener) {
             binding.appName.text = app.name
+            binding.appType.text = app.appType.toString()
+            binding.appPrice.text = app.priceToString()
             binding.root.setOnClickListener { listener.onAppClick(app) }
         }
     }

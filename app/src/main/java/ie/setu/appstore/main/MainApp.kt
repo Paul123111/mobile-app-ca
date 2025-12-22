@@ -29,7 +29,10 @@ class MainApp : Application() {
 
         context = baseContext as Context
 
-        //writeDebugApps()
+        val file = File(context.filesDir, "apps.json")
+        if (!file.exists()) {
+            writeDebugApps()
+        }
 
         apps.setJsonContext(context)
         apps.loadFromFile()

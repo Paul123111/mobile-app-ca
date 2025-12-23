@@ -142,8 +142,9 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
                 binding.appSearch.setQuery("", false)
                 (binding.recyclerView.adapter)?.
                 notifyItemRangeChanged(0,mainApp.apps.findAll().size)
-                if (mainApp.apps.lastRemovedId != -1) (binding.recyclerView.adapter)?.notifyItemRemoved(mainApp.apps.lastRemovedId)
-                mainApp.apps.lastRemovedId = -1
+//                if (mainApp.apps.lastRemovedId != -1) (binding.recyclerView.adapter)?.notifyItemRemoved(mainApp.apps.lastRemovedId)
+//                mainApp.apps.lastRemovedId = -1
+                binding.recyclerView.adapter?.notifyDataSetChanged()
                 search()
             }
         }

@@ -3,6 +3,7 @@ package ie.setu.appstore.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import ie.setu.appstore.databinding.CardPlacemarkBinding
 import ie.setu.appstore.models.AppModel
 
@@ -34,6 +35,9 @@ class AppstoreAdapter constructor(private var apps: List<AppModel>,
             binding.appName.text = app.name
             binding.appType.text = app.appType.toString()
             binding.appPrice.text = app.priceToString()
+            Picasso.get()
+                .load(app.icon)
+                .into(binding.appIcon)
             binding.root.setOnClickListener { listener.onAppClick(app) }
         }
     }

@@ -1,12 +1,18 @@
 package ie.setu.appstore.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import ie.setu.appstore.R
 import ie.setu.appstore.databinding.ActivityAppstoreAddBinding
+import ie.setu.appstore.helpers.showImagePicker
 import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
 import ie.setu.appstore.utils.DecimalDigitsInputFilter
@@ -16,6 +22,7 @@ import timber.log.Timber.i
 class AppstoreAddActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAppstoreAddBinding
     var app = AppModel()
+    private lateinit var imageIntentLauncher : ActivityResultLauncher<PickVisualMediaRequest>
     lateinit var mainApp: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +33,8 @@ class AppstoreAddActivity : AppCompatActivity() {
         i("Placemark Activity started...")
 
         mainApp = application as MainApp
+
+        registerImagePickerCallback()
 
         // https://stackoverflow.com/questions/68282173/convert-enum-values-to-arraystring-with-a-generic-function-in-kotlin
         // just line 37, so I don't have to maintain array string based on enum
@@ -44,6 +53,9 @@ class AppstoreAddActivity : AppCompatActivity() {
             binding.appType.setSelection(app.appType.value)
             val decimalPrice = app.price/100F
             binding.appPrice.setText(decimalPrice.toString())
+            Picasso.get()
+                .load(app.icon)
+                .into(binding.appIcon)
             edit = true
         }
 
@@ -80,5 +92,35 @@ class AppstoreAddActivity : AppCompatActivity() {
                     .show()
             }
         }
+
+        binding.chooseImage.setOnClickListener {
+            val request = PickVisualMediaRequest.Builder()
+                .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                .build()
+            imageIntentLauncher.launch(request)
+        }
+
     }
+
+    private fun registerImagePickerCallback() {
+        imageIntentLauncher = registerForActivityResult(
+            ActivityResultContracts.PickVisualMedia()
+        ) {
+            try{
+                contentResolver
+                    .takePersistableUriPermission(it!!,
+                        Intent.FLAG_GRANT_READ_URI_PERMISSION )
+                app.icon = it // The returned Uri
+                i("IMG :: ${app.icon}")
+                Picasso.get()
+                    .load(app.icon)
+                    .into(binding.appIcon)
+            }
+            catch(e:Exception){
+                e.printStackTrace()
+            }
+        }
+    }
+
+
 }

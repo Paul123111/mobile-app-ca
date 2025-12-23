@@ -76,6 +76,27 @@
                     android:spinnerMode="dropdown" />
 
                 <Button
+                    android:id="@+id/chooseImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:importantForAccessibility="no"
+                    android:padding="8dp"
+                    android:text="@string/button_addIcon"
+                    android:background="@color/white"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    tools:ignore="VisualLintButtonSize" />
+
+                <ImageView
+                    android:id="@+id/appIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAccessibility="no"
+                    app:srcCompat="@mipmap/ic_launcher"
+                    tools:ignore="ImageContrastCheck" />
+
+                <Button
                     android:id="@+id/btnAdd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

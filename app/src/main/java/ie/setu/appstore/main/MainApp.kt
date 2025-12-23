@@ -17,25 +17,28 @@ import java.io.IOException
 import java.io.OutputStreamWriter
 import kotlinx.serialization.json.*
 import ie.setu.appstore.R
+import ie.setu.appstore.models.AppJSONStoreV2
+import ie.setu.appstore.models.AppStore
 
 class MainApp : Application() {
-    var apps = AppJsonStore()
+    lateinit var apps: AppStore
     lateinit var context: Context
 
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
+        apps = AppJSONStoreV2(applicationContext)
         i("Appstore started")
 
-        context = baseContext as Context
+//        context = baseContext as Context
 
-        val file = File(context.filesDir, "apps.json")
-        if (!file.exists()) {
-            writeDebugApps()
-        }
+//        val file = File(context.filesDir, "apps.json")
+//        if (!file.exists()) {
+//            writeDebugApps()
+//        }
 
-        apps.setJsonContext(context)
-        apps.loadFromFile()
+//        apps.setJsonContext(context)
+//        apps.loadFromFile()
 
     }
 

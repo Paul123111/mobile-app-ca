@@ -16,7 +16,7 @@
             android:id="@+id/appName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentTop="false"
             android:textSize="30sp"
             android:textColor="@color/black"
             tools:text="App Name" />
@@ -43,12 +43,15 @@
 
         <ImageView
             android:id="@+id/appIcon"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:importantForAccessibility="no"
-            android:layout_above="@+id/appName"
+            android:contentDescription="Icon"
             app:srcCompat="@mipmap/ic_launcher"
-            tools:ignore="ImageContrastCheck" />
+            tools:ignore="ImageContrastCheck"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

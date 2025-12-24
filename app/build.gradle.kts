@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.picasso)
     implementation(libs.gson)
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+    implementation("androidx.core:core-splashscreen:1.0.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

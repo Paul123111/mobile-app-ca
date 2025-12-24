@@ -1,9 +1,11 @@
 package ie.setu.appstore.adapter
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import ie.setu.appstore.R
 import ie.setu.appstore.databinding.CardPlacemarkBinding
 import ie.setu.appstore.models.AppModel
 
@@ -33,10 +35,11 @@ class AppstoreAdapter constructor(private var apps: List<AppModel>,
         RecyclerView.ViewHolder(binding.root) {
         fun bind(app: AppModel, listener: AppListener) {
             binding.appName.text = app.name
-            binding.appType.text = app.appType.toString()
             binding.appPrice.text = app.priceToString()
             Picasso.get()
                 .load(app.icon)
+                .placeholder(R.mipmap.ic_launcher)
+                .resize(200, 200)
                 .into(binding.appIcon)
             binding.root.setOnClickListener { listener.onAppClick(app) }
         }

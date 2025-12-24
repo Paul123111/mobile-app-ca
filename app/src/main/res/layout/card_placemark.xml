@@ -1,57 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="160dp"
     android:layout_marginBottom="8dp"
-    android:elevation="24dp">
+    android:elevation="24dp"
+    app:cardElevation="10dp">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/appName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="false"
-            android:textSize="30sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
             android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/appIcon"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="App Name" />
 
         <TextView
             android:id="@+id/appPrice"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="false"
-            android:layout_below="@+id/appName"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
             android:textColor="@color/black"
             android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/appIcon"
+            app:layout_constraintTop_toBottomOf="@+id/appName"
             tools:text="Price" />
-
-        <TextView
-            android:id="@+id/appType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="false"
-            android:layout_below="@+id/appPrice"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            tools:text="App Type" />
 
         <ImageView
             android:id="@+id/appIcon"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="16dp"
             android:contentDescription="Icon"
-            app:srcCompat="@mipmap/ic_launcher"
-            tools:ignore="ImageContrastCheck"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/ic_launcher"
+            tools:ignore="ImageContrastCheck" />
 
-    </RelativeLayout>
+        <RatingBar
+            android:id="@+id/ratingBar2"
+            android:layout_width="240dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:isIndicator="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/borderLeft"
+            app:layout_constraintTop_toBottomOf="@+id/appIcon" />
+
+        <View
+            android:id="@+id/borderLeft"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rectangle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/appIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/borderRight"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/rectangle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ratingBar2"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>

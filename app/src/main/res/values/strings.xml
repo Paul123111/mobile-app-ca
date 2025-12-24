@@ -12,7 +12,8 @@
     <string name="editText_appSearch">Search…</string>
     <string name="editText_priceDefault">0.00</string>
     <string name="button_rate">Rate App</string>
-
+    <string name="button_addIcon"> Add Icon </string>
+    <string name="selectIcon"> Select Icon </string>
 
     <string-array name="spinner_sort">
         <item>Name: A-Z</item>

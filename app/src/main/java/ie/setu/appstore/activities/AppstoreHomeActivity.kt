@@ -10,6 +10,8 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.libraries.identity.googleid.GetGoogleIdOption
+import com.google.firebase.auth.FirebaseAuth
 import ie.setu.appstore.R
 import ie.setu.appstore.adapter.AppHomeAdapter
 import ie.setu.appstore.adapter.AppListener
@@ -24,6 +26,7 @@ import timber.log.Timber.i
 class AppstoreHomeActivity : AppCompatActivity(), AppListener {
     private lateinit var binding: ActivityAppstoreHomeBinding
     lateinit var mainApp: MainApp
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +37,19 @@ class AppstoreHomeActivity : AppCompatActivity(), AppListener {
         i("Appstore home activity started")
 
         mainApp = application as MainApp
+
+        // Instantiate a Google sign-in request
+        val googleIdOption = GetGoogleIdOption.Builder()
+            // Your server's client ID, not your Android client ID.
+            .setServerClientId(getString(R.string.default_web_client_id))
+            // Only show accounts previously used to sign in.
+            .setFilterByAuthorizedAccounts(true)
+            .build()
+
+        // Create the Credential Manager request
+        val request = GetCredentialRequest.Builder()
+            .addCredentialOption(googleIdOption)
+            .build()
 
         binding.bottomNavigationView.setOnItemSelectedListener{item -> (
                 when (item.itemId) {

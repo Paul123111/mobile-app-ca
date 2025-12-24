@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.appstore.R
+import ie.setu.appstore.adapter.AppHomeAdapter
 import ie.setu.appstore.adapter.AppListener
 import ie.setu.appstore.adapter.AppstoreAdapter
 import ie.setu.appstore.databinding.ActivityAppstoreBinding
@@ -50,12 +51,14 @@ class AppstoreHomeActivity : AppCompatActivity(), AppListener {
 
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.appsView.layoutManager = layoutManager
-        val adapter = AppstoreAdapter(mainApp.apps.findAll().filter { a -> (a.appType == AppModel.AppType.App) }, this)
+        val adapter = AppHomeAdapter(
+            mainApp.apps.findAll().filter { a -> (a.appType == AppModel.AppType.App) }, this
+        )
         binding.appsView.adapter = adapter
 
         val layoutManager2 = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.gamesView.layoutManager = layoutManager2
-        val adapter2 = AppstoreAdapter(mainApp.apps.findAll().filter { a -> (a.appType == AppModel.AppType.Game) }, this)
+        val adapter2 = AppHomeAdapter(mainApp.apps.findAll().filter { a -> (a.appType == AppModel.AppType.Game) }, this)
         binding.gamesView.adapter = adapter2
     }
 

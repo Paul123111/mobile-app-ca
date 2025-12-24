@@ -52,11 +52,24 @@ class AppJSONStoreV2(private val context: Context) : AppStore {
 
 
     override fun update(app: AppModel) {
-        // todo
+        var foundApp: AppModel? = apps.find { a -> a.id == app.id }
+        if (foundApp != null) {
+            foundApp.name = app.name
+            foundApp.appType = app.appType
+            foundApp.price = app.price
+            foundApp.ratings = app.ratings
+            logAll()
+        }
+        serialize()
     }
 
     override fun delete(id: Int) {
-        // todo
+        var foundApp: AppModel? = apps.find { a -> a.id == id }
+        if (foundApp != null) {
+            apps.remove(foundApp)
+            logAll()
+        }
+        serialize()
     }
 
     override fun search(query: String): List<AppModel> {

@@ -5,19 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import ie.setu.appstore.R
-import ie.setu.appstore.databinding.CardPlacemarkBinding
+import ie.setu.appstore.databinding.CardAppHomeBinding
 import ie.setu.appstore.models.AppModel
 
-interface AppListener {
-    fun onAppClick(app: AppModel)
-}
-
-class AppstoreAdapter constructor(private var apps: List<AppModel>,
-                                  private val listener: AppListener) :
-    RecyclerView.Adapter<AppstoreAdapter.MainHolder>() {
+class AppHomeAdapter constructor(private var apps: List<AppModel>,
+                                 private val listener: AppListener) :
+    RecyclerView.Adapter<AppHomeAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        val binding = CardPlacemarkBinding
+        val binding = CardAppHomeBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
 
         return MainHolder(binding)
@@ -30,11 +26,10 @@ class AppstoreAdapter constructor(private var apps: List<AppModel>,
 
     override fun getItemCount(): Int = apps.size
 
-    class MainHolder(private val binding : CardPlacemarkBinding) :
+    class MainHolder(private val binding : CardAppHomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(app: AppModel, listener: AppListener) {
             binding.appName.text = app.name
-            binding.appPrice.text = app.priceToString()
             Picasso.get()
                 .load(app.icon)
                 .placeholder(R.mipmap.ic_launcher)

@@ -35,6 +35,7 @@ class AppstoreAdapter constructor(private var apps: List<AppModel>,
         fun bind(app: AppModel, listener: AppListener) {
             binding.appName.text = app.name
             binding.appPrice.text = app.priceToString()
+            binding.ratingBar2.rating = app.avgRating()
             Picasso.get()
                 .load(app.icon)
                 .placeholder(R.mipmap.ic_launcher)

@@ -58,6 +58,7 @@ class AppJSONStoreV2(private val context: Context) : AppStore {
             foundApp.appType = app.appType
             foundApp.price = app.price
             foundApp.ratings = app.ratings
+            foundApp.icon = app.icon
             logAll()
         }
         serialize()
@@ -111,7 +112,7 @@ class UriParser : JsonDeserializer<Uri>, JsonSerializer<Uri> {
         typeOfT: Type?,
         context: JsonDeserializationContext?
     ): Uri {
-        return Uri.parse(json?.toString())
+        return Uri.parse(json?.asString)
     }
 
     override fun serialize(

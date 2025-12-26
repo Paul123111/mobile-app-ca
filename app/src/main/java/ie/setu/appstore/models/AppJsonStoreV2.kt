@@ -50,7 +50,6 @@ class AppJSONStoreV2(private val context: Context) : AppStore {
         serialize()
     }
 
-
     override fun update(app: AppModel) {
         var foundApp: AppModel? = apps.find { a -> a.id == app.id }
         if (foundApp != null) {
@@ -70,6 +69,11 @@ class AppJSONStoreV2(private val context: Context) : AppStore {
             apps.remove(foundApp)
             logAll()
         }
+        serialize()
+    }
+
+    override fun delete(app: AppModel) {
+        apps.remove(app)
         serialize()
     }
 

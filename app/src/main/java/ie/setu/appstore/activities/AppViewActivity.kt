@@ -19,6 +19,7 @@ import ie.setu.appstore.databinding.ActivityAppstoreAddBinding
 import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
 import ie.setu.appstore.utils.DecimalDigitsInputFilter
+import ie.setu.appstore.views.add.AppstoreAddView
 import timber.log.Timber
 import timber.log.Timber.i
 
@@ -55,7 +56,7 @@ class AppViewActivity : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
 
         binding.btnEdit.setOnClickListener {
-            val launcherIntent = Intent(this, AppstoreAddActivity::class.java)
+            val launcherIntent = Intent(this, AppstoreAddView::class.java)
             launcherIntent.putExtra("app_edit", app)
             getResult.launch(launcherIntent)
             setResult(RESULT_OK)

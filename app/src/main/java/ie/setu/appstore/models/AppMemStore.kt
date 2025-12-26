@@ -41,6 +41,10 @@ class AppMemStore: AppStore {
         }
     }
 
+    override fun delete(app: AppModel) {
+        TODO("Not yet implemented")
+    }
+
     override fun search(query: String): List<AppModel> {
         TODO("unused")
     }

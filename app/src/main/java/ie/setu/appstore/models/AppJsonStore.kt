@@ -72,6 +72,10 @@ class AppJsonStore : AppStore, JsonStore<AppModel> {
         }
     }
 
+    override fun delete(app: AppModel) {
+        TODO("Not yet implemented")
+    }
+
     fun logAll() {
         apps.forEach{ i("$it") }
     }

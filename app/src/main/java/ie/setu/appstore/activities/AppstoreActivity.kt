@@ -17,6 +17,7 @@ import ie.setu.appstore.adapter.AppstoreAdapter
 import ie.setu.appstore.databinding.ActivityAppstoreBinding
 import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
+import ie.setu.appstore.views.add.AppstoreAddView
 import timber.log.Timber
 import timber.log.Timber.i
 import java.util.ArrayList
@@ -51,7 +52,7 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
         binding.bottomNavigationView.setOnItemSelectedListener{item -> (
             when (item.itemId) {
                 R.id.item_add -> {
-                    val launcherIntent = Intent(this, AppstoreAddActivity::class.java)
+                    val launcherIntent = Intent(this, AppstoreAddView::class.java)
                     getResult.launch(launcherIntent)
                 }
                 R.id.item_search -> {

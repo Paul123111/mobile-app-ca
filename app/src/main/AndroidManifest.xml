@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.AppstoreAddActivity"
+            android:name=".views.add.AppstoreAddView"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

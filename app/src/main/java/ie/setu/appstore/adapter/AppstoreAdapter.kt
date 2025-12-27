@@ -9,7 +9,7 @@ import ie.setu.appstore.databinding.CardPlacemarkBinding
 import ie.setu.appstore.models.AppModel
 
 interface AppListener {
-    fun onAppClick(app: AppModel)
+    fun onAppClick(app: AppModel, position: Int)
 }
 
 class AppstoreAdapter constructor(private var apps: List<AppModel>,
@@ -41,7 +41,7 @@ class AppstoreAdapter constructor(private var apps: List<AppModel>,
                 .placeholder(R.mipmap.ic_launcher)
                 .resize(200, 200)
                 .into(binding.appIcon)
-            binding.root.setOnClickListener { listener.onAppClick(app) }
+            binding.root.setOnClickListener { listener.onAppClick(app,adapterPosition) }
         }
     }
 }

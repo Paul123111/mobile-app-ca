@@ -18,6 +18,7 @@ import ie.setu.appstore.databinding.ActivityAppstoreBinding
 import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
 import ie.setu.appstore.views.add.AppstoreAddView
+import ie.setu.appstore.views.home.AppstoreHomeView
 import timber.log.Timber
 import timber.log.Timber.i
 import java.util.ArrayList
@@ -52,13 +53,15 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
         binding.bottomNavigationView.setOnItemSelectedListener{item -> (
             when (item.itemId) {
                 R.id.item_add -> {
+                    finish()
                     val launcherIntent = Intent(this, AppstoreAddView::class.java)
                     getResult.launch(launcherIntent)
                 }
                 R.id.item_search -> {
                 }
                 R.id.item_home -> {
-                    val launcherIntent = Intent(this, AppstoreHomeActivity::class.java)
+                    finish()
+                    val launcherIntent = Intent(this, AppstoreHomeView::class.java)
                     getResult.launch(launcherIntent)
                 }
                 else -> i("unknown option")
@@ -129,7 +132,7 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
             }
         }
 
-    override fun onAppClick(app: AppModel) {
+    override fun onAppClick(app: AppModel, position: Int) {
         val launcherIntent = Intent(this, AppViewActivity::class.java)
         launcherIntent.putExtra("app_edit", app)
         getClickResult.launch(launcherIntent)

@@ -18,7 +18,7 @@
             android:name=".activities.AppViewActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.AppstoreHomeActivity"
+            android:name=".views.home.AppstoreHomeView"
             android:exported="true"
             android:theme="@style/Theme.App.Starting">
             <intent-filter>

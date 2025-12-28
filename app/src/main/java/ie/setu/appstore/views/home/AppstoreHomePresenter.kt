@@ -9,13 +9,13 @@ import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
 import ie.setu.appstore.views.add.AppstoreAddView
 
-class AppstoreHomePresenter(val view: AppstoreHomeView) {
+class AppstoreHomePresenter(val view: HomeViewFragment) {
     lateinit var mainApp: MainApp
     private lateinit var refreshIntentLauncher : ActivityResultLauncher<Intent>
     private var position: Int = 0
 
     init {
-        mainApp = view.application as MainApp
+        mainApp = view.activity?.application as MainApp
         registerRefreshCallback()
     }
 
@@ -37,14 +37,14 @@ class AppstoreHomePresenter(val view: AppstoreHomeView) {
     }
 
     fun addPlacemark() {
-        val launcherIntent = Intent(view, AppstoreAddView::class.java)
-        refreshIntentLauncher.launch(launcherIntent)
+//        val launcherIntent = Intent(view, AppstoreAddView::class.java)
+//        refreshIntentLauncher.launch(launcherIntent)
     }
 
     fun editPlacemark(app: AppModel, pos: Int) {
-        val launcherIntent = Intent(view, AppViewActivity::class.java)
-        launcherIntent.putExtra("app_edit", app)
-        position = pos
-        refreshIntentLauncher.launch(launcherIntent)
+//        val launcherIntent = Intent(view, AppViewActivity::class.java)
+//        launcherIntent.putExtra("app_edit", app)
+//        position = pos
+//        refreshIntentLauncher.launch(launcherIntent)
     }
 }

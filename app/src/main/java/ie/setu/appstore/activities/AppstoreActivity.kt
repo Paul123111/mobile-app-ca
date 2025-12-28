@@ -18,7 +18,7 @@ import ie.setu.appstore.databinding.ActivityAppstoreBinding
 import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
 import ie.setu.appstore.views.add.AppstoreAddView
-import ie.setu.appstore.views.home.AppstoreHomeView
+//import ie.setu.appstore.views.home.AppstoreHomeView
 import timber.log.Timber
 import timber.log.Timber.i
 import java.util.ArrayList
@@ -60,9 +60,9 @@ class AppstoreActivity : AppCompatActivity(), AppListener {
                 R.id.item_search -> {
                 }
                 R.id.item_home -> {
-                    finish()
-                    val launcherIntent = Intent(this, AppstoreHomeView::class.java)
-                    getResult.launch(launcherIntent)
+//                    finish()
+//                    val launcherIntent = Intent(this, AppstoreHomeView::class.java)
+//                    getResult.launch(launcherIntent)
                 }
                 else -> i("unknown option")
             })

@@ -1,12 +1,11 @@
 package ie.setu.appstore.views.add
 
-import android.app.Activity.RESULT_OK
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
-import com.google.android.material.snackbar.Snackbar
-import com.squareup.picasso.Picasso
+import androidx.navigation.fragment.findNavController
+import ie.setu.appstore.R
 import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
 import timber.log.Timber.i
@@ -14,11 +13,12 @@ import timber.log.Timber.i
 class AppstoreAddPresenter(private val view: AppAddFragment) {
 
     var app = AppModel()
-    var mainApp = view.activity?.application as MainApp
+    private lateinit var mainApp: MainApp
     var edit = false
     private lateinit var imageIntentLauncher : ActivityResultLauncher<PickVisualMediaRequest>
 
     init {
+        mainApp = view.activity?.application as MainApp
         if (view.activity?.intent?.hasExtra("app_edit") == true) {
             // getParcelable new method not available in Android 30
             app = (view.activity)?.intent?.extras?.getParcelable("app_edit")!!
@@ -38,10 +38,12 @@ class AppstoreAddPresenter(private val view: AppAddFragment) {
         }
 //        view.activity.setResult(RESULT_OK)
 //        view.finish()
+        view.findNavController().navigate(R.id.action_appAddFragment_to_homeViewFragment)
     }
 
     fun cancel() {
 //        view.finish()
+        view.findNavController().navigate(R.id.action_appAddFragment_to_homeViewFragment)
     }
 
     fun delete() {

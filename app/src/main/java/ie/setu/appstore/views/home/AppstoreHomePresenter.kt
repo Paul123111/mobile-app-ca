@@ -4,11 +4,8 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.fragment.findNavController
 import ie.setu.appstore.R
-//import ie.setu.appstore.activities.AppViewActivity
-import ie.setu.appstore.activities.MainActivity
 import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
 

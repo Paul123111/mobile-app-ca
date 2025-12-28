@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/homeViewFragment">
+    app:startDestination="@id/appAddFragment">
 
     <fragment
         android:id="@+id/homeViewFragment"
@@ -17,5 +17,10 @@
     <fragment
         android:id="@+id/appAddFragment"
         android:name="ie.setu.appstore.views.add.AppAddFragment"
-        android:label="AppAddFragment" />
+        android:label="AppAddFragment"
+        tools:layout="@layout/fragment_app_add">
+        <action
+            android:id="@+id/action_appAddFragment_to_homeViewFragment"
+            app:destination="@id/homeViewFragment" />
+    </fragment>
 </navigation>

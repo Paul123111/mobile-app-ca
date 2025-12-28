@@ -17,7 +17,7 @@ import timber.log.Timber.i
 class AppAddFragment: Fragment(R.layout.fragment_app_add) {
     private var binding: FragmentAppAddBinding? = null
     private lateinit var presenter: AppstoreAddPresenter
-    var app = AppModel()
+//    var app = AppModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

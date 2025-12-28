@@ -52,6 +52,6 @@ class AppstoreHomePresenter(val view: HomeViewFragment) {
 //        refreshIntentLauncher.launch(launcherIntent)
         val args = Bundle()
         args.putParcelable("app_edit", app)
-        view.findNavController().navigate(R.id.action_homeViewFragment_to_appAddFragment, args)
+        view.findNavController().navigate(R.id.action_homeViewFragment_to_appViewFragment, args)
     }
 }

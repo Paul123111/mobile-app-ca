@@ -18,7 +18,7 @@ import ie.setu.appstore.databinding.ActivityAppstoreBinding
 import ie.setu.appstore.databinding.ActivityAppstoreHomeBinding
 import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
-import ie.setu.appstore.views.add.AppstoreAddView
+//import ie.setu.appstore.views.add.AppstoreAddView
 import timber.log.Timber
 import timber.log.Timber.i
 
@@ -39,8 +39,8 @@ class AppstoreHomeActivity : AppCompatActivity(), AppListener {
         binding.bottomNavigationView.setOnItemSelectedListener{item -> (
                 when (item.itemId) {
                     R.id.item_add -> {
-                        val launcherIntent = Intent(this, AppstoreAddView::class.java)
-                        getResult.launch(launcherIntent)
+//                        val launcherIntent = Intent(this, AppstoreAddView::class.java)
+//                        getResult.launch(launcherIntent)
                     }
                     R.id.item_search -> {
                         val launcherIntent = Intent(this, AppstoreActivity::class.java)
@@ -79,9 +79,9 @@ class AppstoreHomeActivity : AppCompatActivity(), AppListener {
         }
 
     override fun onAppClick(app: AppModel, position: Int) {
-        val launcherIntent = Intent(this, AppViewActivity::class.java)
-        launcherIntent.putExtra("app_edit", app)
-        getClickResult.launch(launcherIntent)
+//        val launcherIntent = Intent(this, AppViewActivity::class.java)
+//        launcherIntent.putExtra("app_edit", app)
+//        getClickResult.launch(launcherIntent)
     }
 
     private val getClickResult =

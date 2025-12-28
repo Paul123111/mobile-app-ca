@@ -11,17 +11,17 @@ import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
 import timber.log.Timber.i
 
-class AppstoreAddPresenter(private val view: AppstoreAddView) {
+class AppstoreAddPresenter(private val view: AppAddFragment) {
 
     var app = AppModel()
-    var mainApp = view.application as MainApp
+    var mainApp = view.activity?.application as MainApp
     var edit = false
     private lateinit var imageIntentLauncher : ActivityResultLauncher<PickVisualMediaRequest>
 
     init {
-        if (view.intent.hasExtra("app_edit")) {
+        if (view.activity?.intent?.hasExtra("app_edit") == true) {
             // getParcelable new method not available in Android 30
-            app = view.intent.extras?.getParcelable("app_edit")!!
+            app = (view.activity)?.intent?.extras?.getParcelable("app_edit")!!
             edit = true
         }
         registerImagePickerCallback()
@@ -36,18 +36,18 @@ class AppstoreAddPresenter(private val view: AppstoreAddView) {
         } else {
             mainApp.apps.create(app.copy())
         }
-        view.setResult(RESULT_OK)
-        view.finish()
+//        view.activity.setResult(RESULT_OK)
+//        view.finish()
     }
 
     fun cancel() {
-        view.finish()
+//        view.finish()
     }
 
     fun delete() {
-        view.setResult(99)
+//        view.setResult(99)
         mainApp.apps.delete(app.id)
-        view.finish()
+//        view.finish()
     }
 
     fun cacheApp(name: String, type: AppModel.AppType, price: Int) {
@@ -68,10 +68,10 @@ class AppstoreAddPresenter(private val view: AppstoreAddView) {
             ActivityResultContracts.PickVisualMedia()
         ) {
             try{
-                view.contentResolver
-                    .takePersistableUriPermission(it!!,
+                view.activity?.contentResolver
+                    ?.takePersistableUriPermission(it!!,
                         Intent.FLAG_GRANT_READ_URI_PERMISSION )
-                app.icon = it // The returned Uri
+                app.icon = it!! // The returned Uri
                 i("IMG :: ${app.icon}")
                 view.updateIcon(app.icon)
             }

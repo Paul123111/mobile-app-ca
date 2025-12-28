@@ -3,6 +3,7 @@ package ie.setu.appstore.views.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.appstore.R
 import ie.setu.appstore.adapter.AppHomeAdapter
@@ -23,6 +24,22 @@ class HomeViewFragment: Fragment(R.layout.fragment_home), AppListener {
         binding = FragmentHomeBinding.bind(view)
         presenter = AppstoreHomePresenter(this)
         mainApp = activity?.application as MainApp
+
+        binding!!.bottomNavigationView.setOnItemSelectedListener{item -> (
+                when (item.itemId) {
+                    R.id.item_add -> {
+                        presenter.addPlacemark()
+//                        findNavController().navigate(R.id.action_homeViewFragment_to_appAddFragment)
+                    }
+                    R.id.item_search -> {}
+                    R.id.item_home -> {
+                        onRefresh()
+                    }
+                    else -> i("unknown option")
+                })
+            return@setOnItemSelectedListener true
+
+        }
 
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         binding?.appsView?.layoutManager = layoutManager

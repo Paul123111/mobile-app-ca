@@ -7,29 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/grey"
-        android:fitsSystemWindows="true"
-        app:elevation="0dip"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:theme="@color/black"
-            app:titleTextColor="@color/black">
-
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/appsView"
         android:layout_width="match_parent"
@@ -38,8 +15,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toTopOf="@id/gamesView"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gamesView"
@@ -48,9 +24,7 @@
         android:scrollbars="horizontal"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constrainedHeight="true"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
-        app:layout_constraintTop_toBottomOf="@id/appsView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@id/appsView" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

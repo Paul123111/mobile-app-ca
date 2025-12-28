@@ -5,10 +5,17 @@
     android:id="@+id/app_navigation"
     app:startDestination="@id/homeViewFragment">
 
-
     <fragment
         android:id="@+id/homeViewFragment"
         android:name="ie.setu.appstore.views.home.HomeViewFragment"
         android:label="HomeViewFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeViewFragment_to_appAddFragment"
+            app:destination="@id/appAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appAddFragment"
+        android:name="ie.setu.appstore.views.add.AppAddFragment"
+        android:label="AppAddFragment" />
 </navigation>

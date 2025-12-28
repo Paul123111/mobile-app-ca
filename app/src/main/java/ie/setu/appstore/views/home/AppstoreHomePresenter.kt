@@ -4,10 +4,13 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import ie.setu.appstore.activities.AppViewActivity
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
+import ie.setu.appstore.R
+//import ie.setu.appstore.activities.AppViewActivity
+import ie.setu.appstore.activities.MainActivity
 import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
-import ie.setu.appstore.views.add.AppstoreAddView
 
 class AppstoreHomePresenter(val view: HomeViewFragment) {
     lateinit var mainApp: MainApp
@@ -39,6 +42,7 @@ class AppstoreHomePresenter(val view: HomeViewFragment) {
     fun addPlacemark() {
 //        val launcherIntent = Intent(view, AppstoreAddView::class.java)
 //        refreshIntentLauncher.launch(launcherIntent)
+        view.findNavController().navigate(R.id.action_homeViewFragment_to_appAddFragment)
     }
 
     fun editPlacemark(app: AppModel, pos: Int) {

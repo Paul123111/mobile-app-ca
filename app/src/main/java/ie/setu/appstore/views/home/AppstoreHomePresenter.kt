@@ -2,12 +2,15 @@ package ie.setu.appstore.views.home
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
+import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import ie.setu.appstore.R
 import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
+import ie.setu.appstore.views.add.AppAddFragment
 
 class AppstoreHomePresenter(val view: HomeViewFragment) {
     lateinit var mainApp: MainApp
@@ -47,5 +50,8 @@ class AppstoreHomePresenter(val view: HomeViewFragment) {
 //        launcherIntent.putExtra("app_edit", app)
 //        position = pos
 //        refreshIntentLauncher.launch(launcherIntent)
+        val args = Bundle()
+        args.putParcelable("app_edit", app)
+        view.findNavController().navigate(R.id.action_homeViewFragment_to_appAddFragment, args)
     }
 }

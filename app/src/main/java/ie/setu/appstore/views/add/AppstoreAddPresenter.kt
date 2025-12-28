@@ -19,9 +19,10 @@ class AppstoreAddPresenter(private val view: AppAddFragment) {
 
     init {
         mainApp = view.activity?.application as MainApp
-        if (view.activity?.intent?.hasExtra("app_edit") == true) {
+        val bundle = view.arguments
+        if (bundle?.containsKey("app_edit") == true) {
             // getParcelable new method not available in Android 30
-            app = (view.activity)?.intent?.extras?.getParcelable("app_edit")!!
+            app = bundle.get("app_edit")!! as AppModel
             edit = true
         }
         registerImagePickerCallback()

@@ -3,7 +3,6 @@ package ie.setu.appstore.views.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.appstore.R
 import ie.setu.appstore.adapter.AppHomeAdapter
@@ -28,10 +27,11 @@ class HomeViewFragment: Fragment(R.layout.fragment_home), AppListener {
         binding!!.bottomNavigationView.setOnItemSelectedListener{item -> (
                 when (item.itemId) {
                     R.id.item_add -> {
-                        presenter.addPlacemark()
-//                        findNavController().navigate(R.id.action_homeViewFragment_to_appAddFragment)
+                        presenter.addApp()
                     }
-                    R.id.item_search -> {}
+                    R.id.item_search -> {
+                        presenter.searchApps()
+                    }
                     R.id.item_home -> {
                         onRefresh()
                     }
@@ -73,6 +73,6 @@ class HomeViewFragment: Fragment(R.layout.fragment_home), AppListener {
     override fun onAppClick(app: AppModel, position: Int) {
         this.position = position
         onRefresh()
-        presenter.editPlacemark(app, this.position)
+        presenter.editApp(app, this.position)
     }
 }

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeViewFragment_to_appViewFragment"
             app:destination="@id/appViewFragment" />
+        <action
+            android:id="@+id/action_homeViewFragment_to_appSearchFragment"
+            app:destination="@id/appSearchFragment" />
     </fragment>
     <fragment
         android:id="@+id/appAddFragment"
@@ -33,6 +36,21 @@
         tools:layout="@layout/activity_app_view">
         <action
             android:id="@+id/action_appViewFragment_to_appAddFragment"
+            app:destination="@id/appAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appSearchFragment"
+        android:name="ie.setu.appstore.views.search.AppSearchFragment"
+        android:label="AppSearchFragment"
+        tools:layout="@layout/activity_appstore">
+        <action
+            android:id="@+id/action_appSearchFragment_to_homeViewFragment"
+            app:destination="@id/homeViewFragment" />
+        <action
+            android:id="@+id/action_appSearchFragment_to_appViewFragment"
+            app:destination="@id/appViewFragment" />
+        <action
+            android:id="@+id/action_appSearchFragment_to_appAddFragment"
             app:destination="@id/appAddFragment" />
     </fragment>
 </navigation>

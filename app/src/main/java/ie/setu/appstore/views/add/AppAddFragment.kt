@@ -77,9 +77,10 @@ class AppAddFragment: Fragment(R.layout.fragment_app_add) {
     }
 
     fun updateIcon(icon: Uri){
-        i("Icon updated")
         Picasso.get()
             .load(icon)
-            .into(binding!!.appIcon)
+            .placeholder(R.mipmap.ic_launcher)
+            .resize(200, 200)
+            .into(binding?.appIcon)
     }
 }

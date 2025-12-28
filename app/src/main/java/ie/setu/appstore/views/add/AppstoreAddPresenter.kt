@@ -22,6 +22,7 @@ class AppstoreAddPresenter(private val view: AppAddFragment) {
         val bundle = view.arguments
         if (bundle?.containsKey("app_edit") == true) {
             app = bundle.getParcelable<AppModel>("app_edit")!!
+            view.showApp(app)
             edit = true
         }
         registerImagePickerCallback()

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/homeViewFragment">
+
+    <fragment
+        android:id="@+id/homeViewFragment"
+        android:name="ie.setu.appstore.views.home.HomeViewFragment"
+        android:label="HomeViewFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeViewFragment_to_appAddFragment"
+            app:destination="@id/appAddFragment" />
+        <action
+            android:id="@+id/action_homeViewFragment_to_appViewFragment"
+            app:destination="@id/appViewFragment" />
+        <action
+            android:id="@+id/action_homeViewFragment_to_appSearchFragment"
+            app:destination="@id/appSearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appAddFragment"
+        android:name="ie.setu.appstore.views.add.AppAddFragment"
+        android:label="AppAddFragment"
+        tools:layout="@layout/fragment_app_add">
+        <action
+            android:id="@+id/action_appAddFragment_to_homeViewFragment"
+            app:destination="@id/homeViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appViewFragment"
+        android:name="ie.setu.appstore.views.view.AppViewFragment"
+        android:label="AppViewFragment"
+        tools:layout="@layout/activity_app_view">
+        <action
+            android:id="@+id/action_appViewFragment_to_appAddFragment"
+            app:destination="@id/appAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appSearchFragment"
+        android:name="ie.setu.appstore.views.search.AppSearchFragment"
+        android:label="AppSearchFragment"
+        tools:layout="@layout/activity_appstore">
+        <action
+            android:id="@+id/action_appSearchFragment_to_homeViewFragment"
+            app:destination="@id/homeViewFragment" />
+        <action
+            android:id="@+id/action_appSearchFragment_to_appViewFragment"
+            app:destination="@id/appViewFragment" />
+        <action
+            android:id="@+id/action_appSearchFragment_to_appAddFragment"
+            app:destination="@id/appAddFragment" />
+    </fragment>
+</navigation>

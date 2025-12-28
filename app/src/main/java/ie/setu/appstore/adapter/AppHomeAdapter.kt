@@ -26,6 +26,14 @@ class AppHomeAdapter constructor(private var apps: List<AppModel>,
 
     override fun getItemCount(): Int = apps.size
 
+    fun filterGames() {
+        apps = apps.filter { a -> (a.appType == AppModel.AppType.Game) }
+    }
+
+    fun filterApps() {
+        apps = apps.filter { a -> (a.appType == AppModel.AppType.App) }
+    }
+
     class MainHolder(private val binding : CardAppHomeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(app: AppModel, listener: AppListener) {
@@ -35,7 +43,7 @@ class AppHomeAdapter constructor(private var apps: List<AppModel>,
                 .placeholder(R.mipmap.ic_launcher)
                 .resize(200, 200)
                 .into(binding.appIcon)
-            binding.root.setOnClickListener { listener.onAppClick(app) }
+            binding.root.setOnClickListener { listener.onAppClick(app,adapterPosition) }
         }
     }
 }

@@ -23,6 +23,7 @@ class AppSearchFragment: Fragment(R.layout.activity_appstore), AppListener {
     private lateinit var binding: ActivityAppstoreBinding
     private lateinit var presenter: AppstoreSearchPresenter
     private lateinit var appList: ArrayList<AppModel>
+    private var position: Int = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -112,6 +113,9 @@ class AppSearchFragment: Fragment(R.layout.activity_appstore), AppListener {
 //        val launcherIntent = Intent(this, AppViewActivity::class.java)
 //        launcherIntent.putExtra("app_edit", app)
 //        getClickResult.launch(launcherIntent)
+        this.position = position
+        onRefresh()
+        presenter.editApp(app, this.position)
     }
 
     private val getClickResult =

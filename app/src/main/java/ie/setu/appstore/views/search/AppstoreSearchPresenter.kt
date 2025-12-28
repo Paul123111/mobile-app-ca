@@ -1,5 +1,6 @@
 package ie.setu.appstore.views.search
 
+import android.os.Bundle
 import androidx.core.util.Predicate
 import androidx.navigation.fragment.findNavController
 import ie.setu.appstore.R
@@ -27,5 +28,11 @@ class AppstoreSearchPresenter(private val view: AppSearchFragment) {
 
     fun home() {
         view.findNavController().navigate(R.id.action_appSearchFragment_to_homeViewFragment)
+    }
+
+    fun editApp(app: AppModel, pos: Int) {
+        val args = Bundle()
+        args.putParcelable("app_edit", app)
+        view.findNavController().navigate(R.id.action_appSearchFragment_to_appViewFragment, args)
     }
 }

@@ -18,6 +18,7 @@ class SignupFragment: Fragment(R.layout.fragment_signup) {
         binding = FragmentSignupBinding.bind(view)
         firebaseAuth = FirebaseAuth.getInstance()
 
+        // https://www.youtube.com/watch?v=idbxxkF1l6k
         binding!!.btnEdit.setOnClickListener {
             val user = binding!!.username.text.toString()
             val pass = binding!!.password.text.toString()

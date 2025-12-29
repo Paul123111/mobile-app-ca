@@ -46,14 +46,12 @@
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:layout_weight=".50"
-                android:background="@android:drawable/btn_dropdown"
                 android:inputType="text"
+                android:background="@drawable/dropdown"
                 android:maxLength="25"
                 android:maxLines="1"
                 android:padding="8dp"
                 android:spinnerMode="dropdown"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
                 android:textSize="16sp" />
 
             <Spinner
@@ -62,15 +60,15 @@
                 android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:layout_weight=".50"
-                android:background="@android:drawable/btn_dropdown"
+                android:background="@drawable/dropdown"
                 android:entries="@array/spinner_sort"
                 android:inputType="text"
                 android:maxLength="25"
                 android:maxLines="1"
                 android:padding="8dp"
                 android:spinnerMode="dropdown"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="16sp" />
         </LinearLayout>
 

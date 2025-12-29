@@ -29,14 +29,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="30sp"
-                    android:textColor="@color/black"
                     tools:text="App Name" />
 
                 <TextView
                     android:id="@+id/appType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:textSize="30sp"
                     tools:text="App Type" />
 
@@ -44,7 +42,6 @@
                     android:id="@+id/appPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:textSize="30sp"
                     tools:text="Price" />
 
@@ -57,7 +54,6 @@
                     android:padding="8dp"
                     android:stateListAnimator="@null"
                     android:text="@string/button_viewEdit"
-                    android:textColor="@color/black"
                     android:textSize="20sp" />
 
             <LinearLayout
@@ -80,7 +76,6 @@
                         android:padding="8dp"
                         android:stateListAnimator="@null"
                         android:text="@string/button_rate"
-                        android:textColor="@color/black"
                         android:textSize="20sp" />
                     <TextView
                         android:id="@+id/avgRating"
@@ -91,7 +86,6 @@
                         android:padding="8dp"
                         android:stateListAnimator="@null"
                         android:text="3"
-                        android:textColor="@color/black"
                         android:textSize="20sp" />
                 </LinearLayout>
                 <NumberPicker
@@ -100,11 +94,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight=".50"
                     android:layout_margin="16dp"
-                    android:background="@color/white"
                     android:padding="8dp"
                     android:stateListAnimator="@null"
                     android:text="@string/button_viewEdit"
-                    android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
 

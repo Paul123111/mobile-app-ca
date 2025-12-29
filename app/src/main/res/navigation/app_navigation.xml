@@ -12,13 +12,25 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeViewFragment_to_appAddFragment"
-            app:destination="@id/appAddFragment" />
+            app:destination="@id/appAddFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"/>
         <action
             android:id="@+id/action_homeViewFragment_to_appViewFragment"
-            app:destination="@id/appViewFragment" />
+            app:destination="@id/appViewFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_homeViewFragment_to_appSearchFragment"
-            app:destination="@id/appSearchFragment" />
+            app:destination="@id/appSearchFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/appAddFragment"
@@ -27,30 +39,50 @@
         tools:layout="@layout/fragment_app_add">
         <action
             android:id="@+id/action_appAddFragment_to_homeViewFragment"
-            app:destination="@id/homeViewFragment" />
+            app:destination="@id/homeViewFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"/>
     </fragment>
     <fragment
         android:id="@+id/appViewFragment"
         android:name="ie.setu.appstore.views.view.AppViewFragment"
         android:label="AppViewFragment"
-        tools:layout="@layout/activity_app_view">
+        tools:layout="@layout/fragment_app_view">
         <action
             android:id="@+id/action_appViewFragment_to_appAddFragment"
-            app:destination="@id/appAddFragment" />
+            app:destination="@id/appAddFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"/>
     </fragment>
     <fragment
         android:id="@+id/appSearchFragment"
         android:name="ie.setu.appstore.views.search.AppSearchFragment"
         android:label="AppSearchFragment"
-        tools:layout="@layout/activity_appstore">
+        tools:layout="@layout/fragment_app_search">
         <action
             android:id="@+id/action_appSearchFragment_to_homeViewFragment"
-            app:destination="@id/homeViewFragment" />
+            app:destination="@id/homeViewFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"/>
         <action
             android:id="@+id/action_appSearchFragment_to_appViewFragment"
-            app:destination="@id/appViewFragment" />
+            app:destination="@id/appViewFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"/>
         <action
             android:id="@+id/action_appSearchFragment_to_appAddFragment"
-            app:destination="@id/appAddFragment" />
+            app:destination="@id/appAddFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"/>
     </fragment>
 </navigation>

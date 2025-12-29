@@ -5,29 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AppstoreAddActivity">
+    tools:context=".views.view.AppViewFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintTop_toTopOf="parent">
-
-<!--        <com.google.android.material.appbar.AppBarLayout-->
-<!--            android:id="@+id/appBarLayout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@color/black"-->
-<!--            android:fitsSystemWindows="true"-->
-<!--            app:elevation="0dip"-->
-<!--            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
-
-<!--            <androidx.appcompat.widget.Toolbar-->
-<!--                android:id="@+id/toolbarAdd"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:titleTextColor="@color/white" />-->
-<!--        </com.google.android.material.appbar.AppBarLayout>-->
 
         <ScrollView
             android:layout_width="match_parent"

@@ -19,7 +19,7 @@ import java.lang.reflect.Type
 import java.util.Random
 import androidx.core.net.toUri
 
-const val JSON_FILE = "placemarks.json"
+const val JSON_FILE = "appstore.json"
 val gsonBuilder: Gson = GsonBuilder().setPrettyPrinting()
     .registerTypeAdapter(Uri::class.java, UriParser())
     .create()

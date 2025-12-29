@@ -37,20 +37,16 @@ class AppstoreAddPresenter(private val view: AppAddFragment) {
         } else {
             mainApp.apps.create(app.copy())
         }
-//        view.activity.setResult(RESULT_OK)
-//        view.finish()
         view.findNavController().navigate(R.id.action_appAddFragment_to_homeViewFragment)
     }
 
     fun cancel() {
-//        view.finish()
         view.findNavController().navigate(R.id.action_appAddFragment_to_homeViewFragment)
     }
 
     fun delete() {
-//        view.setResult(99)
         mainApp.apps.delete(app.id)
-//        view.finish()
+        view.findNavController().navigate(R.id.action_appAddFragment_to_homeViewFragment)
     }
 
     fun cacheApp(name: String, type: AppModel.AppType, price: Int) {

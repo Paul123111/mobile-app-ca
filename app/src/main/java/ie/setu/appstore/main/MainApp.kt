@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.core.splashscreen.SplashScreen
 import ie.setu.appstore.R
+import ie.setu.appstore.models.AppCloudStore
 import ie.setu.appstore.models.AppJSONStoreV2
 import ie.setu.appstore.models.AppStore
 import kotlinx.serialization.json.*
@@ -19,7 +20,7 @@ class MainApp : Application() {
     override fun onCreate() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
-        apps = AppJSONStoreV2(applicationContext)
+        apps = AppCloudStore(applicationContext)
         i("Appstore started")
     }
 

@@ -33,5 +33,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_hotbar" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

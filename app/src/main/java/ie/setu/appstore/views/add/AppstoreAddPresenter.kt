@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import ie.setu.appstore.R
 import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
@@ -16,9 +17,14 @@ class AppstoreAddPresenter(private val view: AppAddFragment) {
     private lateinit var mainApp: MainApp
     var edit = false
     private lateinit var imageIntentLauncher : ActivityResultLauncher<PickVisualMediaRequest>
+    private lateinit var firebaseAuth: FirebaseAuth
 
     init {
         mainApp = view.activity?.application as MainApp
+        firebaseAuth = FirebaseAuth.getInstance()
+        if (firebaseAuth.currentUser == null) {
+//            view.activity?.supportFragmentManager?.popBackStack()
+        }
         val bundle = view.arguments
         if (bundle?.containsKey("app_edit") == true) {
             app = bundle.getParcelable<AppModel>("app_edit")!!

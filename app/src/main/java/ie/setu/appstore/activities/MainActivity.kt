@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         binding.drawer.drawer.setNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.nav_logout -> logOut()
+//                R.id.nav_account -> setTheme(R.style.Theme_Mobileappca)
             }
             true
         }
@@ -65,8 +66,6 @@ class MainActivity : AppCompatActivity() {
         if (firebaseAuth.currentUser != null) {
             firebaseAuth.signOut()
             findNavController(R.id.fragmentContainerView).popBackStack(R.id.loginFragment, false)
-//            val entry = manager.getBackStackEntryAt(manager.backStackEntryCount - 2)
-//            manager.popBackStack(entry.name, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
     }
 }

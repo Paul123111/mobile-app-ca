@@ -1,9 +1,12 @@
 package ie.setu.appstore.views.add
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import androidx.compose.ui.window.Dialog
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -34,7 +37,14 @@ class AppAddFragment: Fragment(R.layout.fragment_app_add) {
         }
 
         binding!!.btnDelete.setOnClickListener {
-            presenter.delete()
+            val alert = AlertDialog.Builder(activity)
+            alert.setMessage("Delete " + presenter.app.name + "?")
+            alert.setPositiveButton("Yes", { DialogInterface, Int -> Unit
+                presenter.delete()
+            })
+            alert.setNegativeButton("No", { DialogInterface, Int -> Unit
+            })
+            alert.show()
         }
         binding!!.btnDelete.visibility = if (presenter.edit) View.VISIBLE else View.GONE
 

@@ -23,6 +23,8 @@
         <item>Name: Z-A</item>
         <item>Price: Low-High</item>
         <item>Price: High-Low</item>
+        <item>Rating: Low-High</item>
+        <item>Rating: High-Low</item>
     </string-array>
 
 

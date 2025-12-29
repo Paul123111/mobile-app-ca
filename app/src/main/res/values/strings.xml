@@ -15,6 +15,8 @@
     <string name="button_rate">Rate App</string>
     <string name="button_changeIcon"> Change Icon </string>
     <string name="selectIcon"> Select Icon </string>
+    <string name="button_signup"> Sign Up </string>
+    <string name="button_login"> Login </string>
 
     <string-array name="spinner_sort">
         <item>Name: A-Z</item>

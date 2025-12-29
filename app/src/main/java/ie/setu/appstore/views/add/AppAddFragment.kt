@@ -11,13 +11,10 @@ import ie.setu.appstore.R
 import ie.setu.appstore.databinding.FragmentAppAddBinding
 import ie.setu.appstore.models.AppModel
 import ie.setu.appstore.utils.DecimalDigitsInputFilter
-import timber.log.Timber
-import timber.log.Timber.i
 
 class AppAddFragment: Fragment(R.layout.fragment_app_add) {
     private var binding: FragmentAppAddBinding? = null
     private lateinit var presenter: AppstoreAddPresenter
-//    var app = AppModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,11 +53,6 @@ class AppAddFragment: Fragment(R.layout.fragment_app_add) {
         binding!!.btnAdd.setText(if (!presenter.edit) R.string.button_appAdd else R.string.button_appEdit)
 
         binding!!.chooseImage.setOnClickListener {
-//            presenter.cacheApp(
-//                binding!!.appName.text.toString(),
-//                AppModel.AppType.valueOf(binding!!.appType.selectedItem.toString()),
-//                (binding!!.appPrice.text.toString().toFloat()*100).toInt()
-//            )
             presenter.selectImage()
         }
 
@@ -73,7 +65,9 @@ class AppAddFragment: Fragment(R.layout.fragment_app_add) {
         binding!!.appPrice.setText(decimalPrice.toString())
         Picasso.get()
             .load(app.icon)
-            .into(binding!!.appIcon)
+            .placeholder(R.mipmap.ic_launcher)
+            .resize(200, 200)
+            .into(binding?.appIcon)
     }
 
     fun updateIcon(icon: Uri){

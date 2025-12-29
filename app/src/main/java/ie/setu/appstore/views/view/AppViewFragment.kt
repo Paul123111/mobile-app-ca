@@ -3,22 +3,19 @@ package ie.setu.appstore.views.view
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.appstore.R
 import ie.setu.appstore.adapter.RatingAdapter
-import ie.setu.appstore.databinding.ActivityAppViewBinding
-import ie.setu.appstore.main.MainApp
+import ie.setu.appstore.databinding.FragmentAppViewBinding
 import ie.setu.appstore.models.AppModel
-import ie.setu.appstore.views.add.AppstoreAddPresenter
 
-class AppViewFragment: Fragment(R.layout.activity_app_view) {
-    private lateinit var binding: ActivityAppViewBinding
+class AppViewFragment: Fragment(R.layout.fragment_app_view) {
+    private lateinit var binding: FragmentAppViewBinding
     private lateinit var presenter: AppViewPresenter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = ActivityAppViewBinding.bind(view)
+        binding = FragmentAppViewBinding.bind(view)
         presenter = AppViewPresenter(this)
 
         binding.rating.setMaxValue(5)
@@ -30,11 +27,6 @@ class AppViewFragment: Fragment(R.layout.activity_app_view) {
         binding.recyclerView.adapter = adapter
 
         binding.btnEdit.setOnClickListener {
-//            val launcherIntent = Intent(this, AppstoreAddView::class.java)
-//            launcherIntent.putExtra("app_edit", app)
-//            getResult.launch(launcherIntent)
-//            setResult(RESULT_OK)
-//            finish()
             presenter.editApp()
         }
 
@@ -51,13 +43,4 @@ class AppViewFragment: Fragment(R.layout.activity_app_view) {
 
         binding.recyclerView.adapter?.notifyItemRangeChanged(0, app.ratings.size)
     }
-
-//    private val getResult =
-//        registerForActivityResult(
-//            ActivityResultContracts.StartActivityForResult()
-//        ) {
-//            if (it.resultCode == RESULT_OK) {
-//
-//            }
-//        }
 }

@@ -12,22 +12,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.appstore.R
 import ie.setu.appstore.adapter.AppListener
 import ie.setu.appstore.adapter.AppstoreAdapter
-import ie.setu.appstore.databinding.ActivityAppstoreBinding
-import ie.setu.appstore.main.MainApp
+import ie.setu.appstore.databinding.FragmentAppSearchBinding
 import ie.setu.appstore.models.AppModel
-import timber.log.Timber
 import timber.log.Timber.i
 import java.util.ArrayList
 
-class AppSearchFragment: Fragment(R.layout.activity_appstore), AppListener {
-    private lateinit var binding: ActivityAppstoreBinding
+class AppSearchFragment: Fragment(R.layout.fragment_app_search), AppListener {
+    private lateinit var binding: FragmentAppSearchBinding
     private lateinit var presenter: AppstoreSearchPresenter
     private lateinit var appList: ArrayList<AppModel>
     private var position: Int = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = ActivityAppstoreBinding.bind(view)
+        binding = FragmentAppSearchBinding.bind(view)
         presenter = AppstoreSearchPresenter(this)
 
         val layoutManager = LinearLayoutManager(this.requireActivity(), LinearLayoutManager.VERTICAL, false)
@@ -110,9 +108,6 @@ class AppSearchFragment: Fragment(R.layout.activity_appstore), AppListener {
         }
 
     override fun onAppClick(app: AppModel, position: Int) {
-//        val launcherIntent = Intent(this, AppViewActivity::class.java)
-//        launcherIntent.putExtra("app_edit", app)
-//        getClickResult.launch(launcherIntent)
         this.position = position
         onRefresh()
         presenter.editApp(app, this.position)
@@ -126,8 +121,6 @@ class AppSearchFragment: Fragment(R.layout.activity_appstore), AppListener {
                 binding.appSearch.setQuery("", false)
                 (binding.recyclerView.adapter)?.
                 notifyItemRangeChanged(0,appList.size)
-//                if (mainApp.apps.lastRemovedId != -1) (binding.recyclerView.adapter)?.notifyItemRemoved(mainApp.apps.lastRemovedId)
-//                mainApp.apps.lastRemovedId = -1
                 binding.recyclerView.adapter?.notifyDataSetChanged()
                 search()
             }

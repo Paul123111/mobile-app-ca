@@ -49,7 +49,7 @@
         android:id="@+id/appViewFragment"
         android:name="ie.setu.appstore.views.view.AppViewFragment"
         android:label="AppViewFragment"
-        tools:layout="@layout/activity_app_view">
+        tools:layout="@layout/fragment_app_view">
         <action
             android:id="@+id/action_appViewFragment_to_appAddFragment"
             app:destination="@id/appAddFragment"
@@ -62,7 +62,7 @@
         android:id="@+id/appSearchFragment"
         android:name="ie.setu.appstore.views.search.AppSearchFragment"
         android:label="AppSearchFragment"
-        tools:layout="@layout/activity_appstore">
+        tools:layout="@layout/fragment_app_search">
         <action
             android:id="@+id/action_appSearchFragment_to_homeViewFragment"
             app:destination="@id/homeViewFragment"

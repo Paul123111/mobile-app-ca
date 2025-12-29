@@ -38,8 +38,6 @@ class AppstoreHomePresenter(val view: HomeViewFragment) {
     }
 
     fun addApp() {
-//        val launcherIntent = Intent(view, AppstoreAddView::class.java)
-//        refreshIntentLauncher.launch(launcherIntent)
         view.findNavController().navigate(R.id.action_homeViewFragment_to_appAddFragment)
     }
 
@@ -48,10 +46,6 @@ class AppstoreHomePresenter(val view: HomeViewFragment) {
     }
 
     fun editApp(app: AppModel, pos: Int) {
-//        val launcherIntent = Intent(view, AppViewActivity::class.java)
-//        launcherIntent.putExtra("app_edit", app)
-//        position = pos
-//        refreshIntentLauncher.launch(launcherIntent)
         val args = Bundle()
         args.putParcelable("app_edit", app)
         view.findNavController().navigate(R.id.action_homeViewFragment_to_appViewFragment, args)

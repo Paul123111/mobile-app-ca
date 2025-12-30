@@ -17,6 +17,8 @@
     <string name="selectIcon"> Select Icon </string>
     <string name="button_signup"> Sign Up </string>
     <string name="button_login"> Login </string>
+    <string name="button_google"> Google </string>
+
 
     <string-array name="spinner_sort">
         <item>Name: A-Z</item>

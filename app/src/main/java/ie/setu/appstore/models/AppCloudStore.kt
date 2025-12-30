@@ -31,9 +31,6 @@ class AppCloudStore(private val context: Context) : AppStore {
     init {
         database = Firebase.database("https://genuine-cat-482020-s4-default-rtdb.europe-west1.firebasedatabase.app/").reference
         deserialize()
-//        if (exists(context, JSON_FILE)) {
-//            deserialize()
-//        }
     }
 
     override fun findAll(): MutableList<AppModel> {

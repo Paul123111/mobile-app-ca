@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import ie.setu.appstore.databinding.CardPlacemarkBinding
 import ie.setu.appstore.databinding.RatingCardBinding
 import ie.setu.appstore.models.AppModel
+import ie.setu.appstore.models.CommentModel
 
-class RatingAdapter constructor(private var ratings: List<Int>): RecyclerView.Adapter<RatingAdapter.MainHolder>(){
+class RatingAdapter constructor(private var ratings: List<CommentModel>): RecyclerView.Adapter<RatingAdapter.MainHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         val binding = RatingCardBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
@@ -24,8 +25,10 @@ class RatingAdapter constructor(private var ratings: List<Int>): RecyclerView.Ad
 
     class MainHolder(private val binding : RatingCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(rating: Int) {
-            binding.appRating.text = rating.toString()
+        fun bind(comment: CommentModel) {
+            binding.appRating.text = comment.rating.toString()
+            binding.name.text = comment.username
+            binding.comment.text = comment.comment
         }
     }
 }

@@ -57,7 +57,11 @@ class LoginFragment: Fragment(R.layout.fragment_login) {
         }
 
         binding!!.btnGoogle.setOnClickListener {
-            runBlocking { signInGoogle() }
+            try {
+                runBlocking { signInGoogle() }
+            } catch(e: Exception) {
+
+            }
         }
     }
 

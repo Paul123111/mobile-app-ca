@@ -9,12 +9,12 @@ data class AppModel(var id: Int = 0,
                     var name: String = "",
                     var appType: AppType = AppType.App,
                     var price: Int = 1,
-                    var ratings: ArrayList<Int> = ArrayList(),
+                    var ratings: ArrayList<CommentModel> = ArrayList(),
                     var icon: Uri = Uri.EMPTY
 ) : Parcelable {
     enum class AppType(val value: Int) {App(0), Game(1)}
 
-    fun addRating(rating: Int) {
+    fun addRating(rating: CommentModel) {
         ratings.add(rating)
     }
 
@@ -22,7 +22,7 @@ data class AppModel(var id: Int = 0,
         if (ratings.isEmpty()) {return 0F}
         var sum = 0F
         for (rating in ratings) {
-            sum += rating
+            sum += rating.rating
         }
         return sum/ratings.size
     }
@@ -41,3 +41,11 @@ data class AppModel(var id: Int = 0,
             .plus(priceDigits.takeLast(2).joinToString(""))
         }
     }
+
+@Parcelize
+data class CommentModel(
+    val rating: Int,
+    val username: String,
+    val comment: String
+) : Parcelable
+{}

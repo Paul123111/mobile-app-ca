@@ -13,8 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="username"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="75dp"
+        android:text="@string/button_google"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/drawerImageView"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,10 +25,11 @@
         android:layout_height="80dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="310dp"
         android:background="@mipmap/ic_launcher_round"
         android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

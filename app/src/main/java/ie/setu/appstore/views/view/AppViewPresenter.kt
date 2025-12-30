@@ -5,6 +5,7 @@ import androidx.navigation.fragment.findNavController
 import ie.setu.appstore.R
 import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
+import ie.setu.appstore.models.CommentModel
 
 class AppViewPresenter(val view: AppViewFragment) {
     lateinit var mainApp: MainApp
@@ -19,8 +20,9 @@ class AppViewPresenter(val view: AppViewFragment) {
         }
     }
 
-    fun addRating(rating: Int) {
-        app.addRating(rating)
+    fun addRating(rating: Int, user: String, comment: String) {
+        val newRating = CommentModel(rating, user, comment)
+        app.addRating(newRating)
         mainApp.apps.update(app)
         view.updateView(app)
     }

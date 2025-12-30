@@ -24,7 +24,7 @@ val gsonBuilder: Gson = GsonBuilder().setPrettyPrinting()
     .registerTypeAdapter(Uri::class.java, UriParser())
     .create()
 val listType: Type = object : TypeToken<ArrayList<AppModel>>() {}.type
-
+val locationType: Type = object : TypeToken<Location>() {}.type
 fun generateRandomId(): Int {
     return Random().nextInt()
 }

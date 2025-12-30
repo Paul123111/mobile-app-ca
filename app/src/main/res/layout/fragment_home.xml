@@ -7,15 +7,50 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/dropdown"
+        android:padding="8dp"
+        android:text="Home"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/apps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Apps"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/title" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/appsView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:scrollbars="horizontal"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constrainedHeight="true"
-        app:layout_constraintBottom_toTopOf="@id/gamesView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/apps" />
+
+    <TextView
+        android:id="@+id/games"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="3dp"
+        android:text="Games"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appsView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gamesView"
@@ -24,7 +59,7 @@
         android:scrollbars="horizontal"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constrainedHeight="true"
-        app:layout_constraintTop_toBottomOf="@id/appsView" />
+        app:layout_constraintTop_toBottomOf="@id/games" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

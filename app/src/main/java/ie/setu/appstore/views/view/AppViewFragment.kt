@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
+import com.squareup.picasso.Picasso
 import ie.setu.appstore.R
 import ie.setu.appstore.adapter.RatingAdapter
 import ie.setu.appstore.databinding.FragmentAppViewBinding
@@ -46,6 +47,11 @@ class AppViewFragment: Fragment(R.layout.fragment_app_view) {
         binding.appType.setText(app.appType.toString())
         binding.appPrice.setText(app.priceToString())
         binding.avgRating.text = app.avgRating().toString()
+        Picasso.get()
+            .load(app.icon)
+            .placeholder(R.mipmap.ic_launcher)
+            .resize(600, 600)
+            .into(binding.imageView)
 
         binding.recyclerView.adapter?.notifyItemRangeChanged(0, app.ratings.size)
     }

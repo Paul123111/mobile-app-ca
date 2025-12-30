@@ -26,7 +26,7 @@ class RatingAdapter constructor(private var ratings: List<CommentModel>): Recycl
     class MainHolder(private val binding : RatingCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(comment: CommentModel) {
-            binding.appRating.text = comment.rating.toString()
+            binding.ratingBar2.rating = comment.rating.toFloat()
             binding.name.text = comment.username
             binding.comment.text = comment.comment
         }

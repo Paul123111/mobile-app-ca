@@ -24,7 +24,7 @@ class SignupFragment: Fragment(R.layout.fragment_signup) {
             val pass = binding!!.password.text.toString()
             val pass2 = binding!!.passwordConfirm.text.toString()
 
-            if (user.isNotEmpty() && pass.isNotEmpty() && pass2.isNotEmpty()) {
+            if (user.isNotEmpty() && pass.isNotEmpty() && pass2.isNotEmpty() && pass.length >= 6) {
                 if (pass == pass2) {
                     firebaseAuth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener {
                         findNavController().navigate(R.id.action_signupFragment_to_loginFragment)

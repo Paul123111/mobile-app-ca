@@ -180,6 +180,22 @@ class AppSearchFragment: Fragment(R.layout.fragment_app_search), AppListener {
                         { a, b -> (b.price - a.price).compareTo(0) })
                 )
             }
+
+            4 -> {
+                appList = ArrayList(
+                    presenter.sort(
+                        appList,
+                        { a, b -> (a.avgRating() - b.avgRating()).compareTo(0) })
+                )
+            }
+
+            5 -> {
+                appList = ArrayList(
+                    presenter.sort(
+                        appList,
+                        { a, b -> (b.avgRating() - a.avgRating()).compareTo(0) })
+                )
+            }
         }
         onRefresh()
     }

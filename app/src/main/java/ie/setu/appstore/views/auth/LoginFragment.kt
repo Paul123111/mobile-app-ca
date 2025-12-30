@@ -65,6 +65,7 @@ class LoginFragment: Fragment(R.layout.fragment_login) {
         }
     }
 
+    // https://firebase.google.com/docs/auth/android/google-signin for Google auth
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {

@@ -19,7 +19,6 @@ class AppstoreHomePresenter(val view: HomeViewFragment) {
         mainApp = view.activity?.application as MainApp
         registerRefreshCallback()
     }
-
     fun getAllApps() = mainApp.apps.findAll()
     fun getGames() = mainApp.apps.findAll().filter { a -> (a.appType == AppModel.AppType.Game) }
     fun getApps() = mainApp.apps.findAll().filter { a -> (a.appType == AppModel.AppType.App) }

@@ -43,16 +43,17 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
     var currentMarker: Marker? = null
     var currentLocation: Location? = null
     lateinit var database: DatabaseReference
+    var mapReady: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
+        mapReady = false
         Timber.plant(Timber.DebugTree())
         binding = ActivityMainBinding.inflate(layoutInflater)
         firebaseAuth = FirebaseAuth.getInstance()
         database = Firebase.database("https://genuine-cat-482020-s4-default-rtdb.europe-west1.firebasedatabase.app/").reference
         setContentView(binding.root)
-        firebaseAuth.signOut()
         updateDrawer()
 
         binding.drawer.drawer.setNavigationItemSelectedListener {
@@ -72,12 +73,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        firebaseAuth.signOut()
     }
 
     fun updateDrawer() {
@@ -104,8 +103,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
         if (firebaseAuth.currentUser != null) {
             firebaseAuth.signOut()
             updateDrawer()
-            findNavController(R.id.fragmentContainerView).popBackStack(R.id.loginFragment, false)
         }
+        findNavController(R.id.fragmentContainerView).popBackStack(R.id.loginFragment, false)
     }
 
     fun moveBack() {
@@ -117,12 +116,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
         mMap.setOnCameraMoveStartedListener(this)
         mMap.setOnCameraIdleListener(this)
         mMap.setOnMarkerDragListener(this)
+        mapReady = true
         updateMarker()
     }
 
     fun updateMarker() {
         currentMarker?.remove()
-        if (firebaseAuth.currentUser != null) {
+        if (firebaseAuth.currentUser != null && mapReady) {
             val latLng = LatLng(currentLocation!!.lat, currentLocation!!.lng)
             val options = MarkerOptions()
                 .title("User Location")

@@ -75,6 +75,12 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
 
     }
 
+
+    override fun onPause() {
+        super.onPause()
+        logOut()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         firebaseAuth.signOut()

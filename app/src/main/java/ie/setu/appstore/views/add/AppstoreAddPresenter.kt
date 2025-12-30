@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import ie.setu.appstore.R
+import ie.setu.appstore.activities.MainActivity
 import ie.setu.appstore.main.MainApp
 import ie.setu.appstore.models.AppModel
 import timber.log.Timber.i
@@ -22,9 +23,6 @@ class AppstoreAddPresenter(private val view: AppAddFragment) {
     init {
         mainApp = view.activity?.application as MainApp
         firebaseAuth = FirebaseAuth.getInstance()
-        if (firebaseAuth.currentUser == null) {
-//            view.activity?.supportFragmentManager?.popBackStack()
-        }
         val bundle = view.arguments
         if (bundle?.containsKey("app_edit") == true) {
             app = bundle.getParcelable<AppModel>("app_edit")!!

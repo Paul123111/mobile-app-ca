@@ -22,6 +22,7 @@
     <string name="password"> Password </string>
     <string name="confirm_password"> Confirm Password </string>
     <string name="appstore"> Appstore </string>
+    <string name="editText_comment"> Comment </string>
 
     <string-array name="spinner_sort">
         <item>Name: A-Z</item>

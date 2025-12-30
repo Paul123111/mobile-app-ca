@@ -103,11 +103,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
+                        android:autofillHints="hint"
+                        android:hint="@string/editText_comment"
                         android:layout_marginTop="0dp"
                         android:layout_marginStart="0dp"
                         android:layout_marginEnd="0dp"
-                        android:inputType="text"
-                        android:text="Comment" />
+                        android:inputType="text" />
 
                     <Button
                         android:id="@+id/btnRating"

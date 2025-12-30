@@ -62,6 +62,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
             true
         }
 
+        binding.backBtn.setOnClickListener {
+            moveBack()
+        }
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 //        val drawer = binding.drawer.root
 //        val header = drawer.getHeaderView(0)
@@ -102,6 +106,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback,
             updateDrawer()
             findNavController(R.id.fragmentContainerView).popBackStack(R.id.loginFragment, false)
         }
+    }
+
+    fun moveBack() {
+        findNavController(R.id.fragmentContainerView).navigateUp()
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
